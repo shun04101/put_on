@@ -1,24 +1,42 @@
-# README
+# Put on
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+「Put on」は何かを着るという意味なので、「あなたが次に着る服何にする？」ということの手助けをしたいという思いから生まれたサイト。
+自分が着ている洋服やアクセサリーを他者と共有し、その服が欲しかったら購入した店舗やサイトを閲覧出来るサイト。
 
-Things you may want to cover:
+### サイトテーマ
+コーディネートと洋服購入店舗/サイトの共有・閲覧
 
-* Ruby version
+### テーマを選んだ理由
+私は猫の服を集めるのが好きです。でも、洋服選びのセンスや場所もそれほど知りません。
+そして、このようなコアな趣味趣向を進めようと思ったら、ファッション雑誌や各種SNSを見ても探せないのが現状です。
+それなら洋服に特化した共有サイトがあればセンスも場所も分かると思いました。
+ファッション雑誌はプロが出ているので良く見えます。しかしこのサイトの投稿者は一般の方です。
+**共感と共有**。これが達成できると思い、このテーマにしました。
 
-* System dependencies
+### ターゲットユーザ
+・高校生から30代前半までの男女
+※自分でコーディネートをし、他者へ見せる機会が多い為(学校や遊びに行く際)
+※ファッション雑誌の購読が多い層
 
-* Configuration
+### 主な利用シーン
+・新しい服を買いに行く前 or 買っている時
+・次の日のコーディネートで迷った時
+・ファッション雑誌だとレベルが高く真似ができないと思った時
 
-* Database creation
+## 設計書
+※今後作成予定
 
-* Database initialization
+## チャレンジ要素一覧
+<https://docs.google.com/spreadsheets/d/1E4Quehglf9PxM1XTE-ft2X5-hJ5dmoJhsI-UJlgzVmY/edit#gid=0>
 
-* How to run the test suite
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用素材
+- [ICOOON MONO](https://icooon-mono.com/)
+※随時更新予定
