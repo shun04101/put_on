@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>PutOn</title>
+    <title>Put On…</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,6 +10,38 @@
   </head>
 
   <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <%= link_to root_path, class:"navbar-brand text-dark" do %>
+            <h2 style="font-family: cursive;"><span>Put on…</span></h2>
+          <% end %>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <% if user_signed_in? %>
+                <div class="mt-1 mr-5"><b>ようこそ、<%= current_user.last_name %>さん！</b></div>
+                <li><%= link_to 'マイページ', root_path, class:"fas fa-address-card nav-link text-light font-weight-bold text-dark rounded mr-3 mb-1"%></li>
+                <li><%= link_to "検索", root_path, class:"fas fa-search nav-link text-light font-weight-bold text-dark rounded mr-3 mb-1" %></li>
+                <li><%= link_to 'タイムライン', root_path, class:"fas fa-stream nav-link text-light font-weight-bold text-dark rounded mr-3 mb-1" %></li>
+                <li><%= link_to '新規投稿', root_path, class:"fas fa-plus-circle nav-link text-light font-weight-bold text-dark rounded mr-3 mb-1" %></li>
+                <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"fas fa-sign-out-alt nav-link text-light　font-weight-bold text-dark rounded mb-1" %></li>
+              <% else %>
+                <li><%= link_to 'About', about_path, class:"fab fa-adn nav-link text-light font-weight-bold text-dark rounded mr-3 mb-1" %></li>
+                <li><%= link_to "検索", root_path, class:"fas fa-search nav-link text-light font-weight-bold text-dark rounded mr-3 mb-1" %></li>
+                <li><%= link_to "新規登録", new_user_registration_path, class:"fas fa-user-plus nav-link text-light font-weight-bold text-dark rounded mr-3 mb-1" %></li>
+                <li><%= link_to "ログイン", new_user_session_path, class:"fas fa-sign-in-alt nav-link text-light font-weight-bold text-dark rounded mb-1" %></li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
+    <footer>
+      <div class="mt-5" style="border-top: 1px solid black; text-align: center; font-size: 25px; font-family: cursive;">Put on…</div>
+  　</footer>
   </body>
 </html>
