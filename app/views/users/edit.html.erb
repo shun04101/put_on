@@ -1,0 +1,36 @@
+<div class="container">
+  <h3 class="my-4"><u>会員情報編集</u></h3>
+    <%= form_with model: @user, url: user_path, local: true do |f| %>
+      <%#= render 'layouts/error_messages', model: f.object %>
+      <div class="row form-group pt-3">
+        <div class="col-3"><%= f.label :氏名 %></div>
+        <div class="col-md-3"><%= f.text_field :last_name, class:"form-control" %></div>
+        <div class="col-md-3"><%= f.text_field :first_name, class:"form-control" %></div>
+      </div>
+
+      <div class="row form-group pt-3">
+        <div class="col-3"><%= f.label :フリガナ %></div>
+        <div class="col-md-3"><%= f.text_field :last_name_kana, class:"form-control" %></div>
+        <div class="col-md-3"><%= f.text_field :first_name_kana, class:"form-control" %></div>
+      </div>
+      
+      <div class="row form-group pt-3">
+        <div class="col-3"><%= f.label :ニックネーム %></div>
+        <div class="col-md-6"><%= f.text_field :nickname, class:"form-control" %></div>
+      </div>
+      
+      <div class="row form-group pt-3">
+        <div class="col-3"><%= f.label :メールアドレス %></div>
+        <div class="col-md-6"><%= f.email_field :email, class:"form-control" %></div>
+      </div>
+
+      <div class="row justify-content-center ml-5 pl-3">
+        <div class="col-md-4 ml-5 pl-5">
+          <%= f.submit "編集内容を保存", class:"btn btn-outline-success" %>
+        </div>
+        <div class="col-md-4 ml-5">
+          <%= link_to "退会する", unsubscribe_path, class:"btn btn-outline-danger" %>
+        </div>
+      </div>
+    <% end %>
+</div>
