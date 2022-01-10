@@ -1,10 +1,19 @@
 <!-- 投稿一覧画面 -->
+
+<!--タグリスト-->
+<% @tag_list.each do |list|%>
+  <%=link_to list.tag_name, search_tag_path(tag_id: list.id) %>
+  <%= "(#{list.posts.count})" %>
+<% end %>
 <h3 class="page-header">投稿一覧</h3>
 <ul class="list-group">
   <% @posts.each do |post| %>
   <li class="list-group-item">
     <span class="badge text-danger"><%= link_to "[詳細]", post_path(post.id) %></span>
     <%= post.title %> | <%= post.comment %>
+    <% @posts.each do |post| %>
+      <i class="fas fa-tag"><%= post.tags.map(&:tag_name).join(', ') %></i>
+    <% end %>
   </li>
   <% end %>
 </ul>

@@ -26,6 +26,11 @@
           <%= f.text_area :site, placeholder:"洋服を購入したサイトのURLを張ってください", class: 'form-control col-4' %>
         </div>
         
+        <div class="row form-group">
+          <%= f.label"タグ (,で区切ると複数タグ登録できます)", class: "offset-2 col-3" %>
+          <%= f.text_field :tag_name, value: @tag_list, class:"form-control col-4"%>
+        </div>
+        
         <div class="form-group">
           <%= f.submit "変更を保存する", class: 'btn btn-success btn100 offset-5' %>
         </div>

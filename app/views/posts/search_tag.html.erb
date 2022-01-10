@@ -1,0 +1,22 @@
+<div class="container">
+  <h5>タグが<%=@tag.tag_name%>の投稿一覧</h5>
+  
+  <!--タグリスト-->
+  <% @tag_list.each do |list| %>
+    <%= link_to list.tag_name, search_tag_path(tag_id: list.id) %>
+    <%= "(#{list.posts.count})" %>
+  <% end %>
+  <% @posts.each do |post| %>
+    <!--投稿はカードで囲む-->
+    <div class="card">
+      <div class="card-body">
+        <!--タイトル表示される文字数は２５文字までにしてます-->
+        <h6 class="card-title">
+          <%=link_to post_path(post.id) do %>
+            <%= post.title.truncate(25) %>
+            <%= post.comment %>
+          <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

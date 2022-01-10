@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   # get "posts/index"
   post "posts/new", to: "posts#create"
   patch "posts/:id/edit", to: "posts#update"
+  # タグの検索で使用する
+  get "search_tag"=>"posts#search_tag"
 end
