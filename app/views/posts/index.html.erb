@@ -1,0 +1,10 @@
+<!-- 投稿一覧画面 -->
+<h3 class="page-header">投稿一覧</h3>
+<ul class="list-group">
+  <% @posts.each do |post| %>
+  <li class="list-group-item">
+    <span class="badge text-danger"><%= link_to "[詳細]", post_path(post.id) %></span>
+    <%= post.title %> | <%= post.comment %>
+  </li>
+  <% end %>
+</ul>

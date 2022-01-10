@@ -1,0 +1,35 @@
+<!--　投稿詳細画面 -->
+<div class="container">
+  <!--<div class="text-success"><strong style="font-size: 20px;"><%#= flash[:success] %></strong></div>-->
+  <div class="row">
+    <div class="offset-1 col-11 mt-5 h4">投稿詳細</div>
+  </div>
+  <div class="row mt-5">
+    <%= attachment_image_tag(@post, :image, size: "500x500", format: "jpeg") %>
+    <div class="col-md-5 offset-1">
+      <table class="table table-borderless">
+        <tr>
+          <td>タイトル</td>
+          <td><%= @post.title %></td>
+        </tr>
+        <tr>
+          <td>コメント</td>
+          <td><%= @post.comment %></td>
+        </tr>
+        <tr>
+          <td>リンク</td>
+          <!--<td><%#= @post.site %></td>-->
+          <td><%= Rinku.auto_link(@post.site, :all, 'target="_blank"').html_safe %></td>
+        </tr>
+      </table>
+      <div class="row pl-4">
+        <td><%= link_to '編集する', edit_post_path(@post), class: "btn btn-success center-block" %>
+      </div>
+      <div class='row pl-4'>
+        <% if @post.user == current_user %>
+          <td><%= link_to "削除", post_path(@post), method: :delete, class: "btn btn-danger center-block" %></td>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

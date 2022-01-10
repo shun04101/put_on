@@ -26,7 +26,7 @@
                 <li><%= link_to 'マイページ', user_path(current_user.id), class:"fas fa-address-card nav-link text-light font-weight-bold text-dark rounded mr-3 mb-1"%></li>
                 <li><%= link_to "検索", root_path, class:"fas fa-search nav-link text-light font-weight-bold text-dark rounded mr-3 mb-1" %></li>
                 <li><%= link_to 'タイムライン', root_path, class:"fas fa-stream nav-link text-light font-weight-bold text-dark rounded mr-3 mb-1" %></li>
-                <li><%= link_to '新規投稿', root_path, class:"fas fa-plus-circle nav-link text-light font-weight-bold text-dark rounded mr-3 mb-1" %></li>
+                <li><%= link_to '新規投稿', new_post_path, class:"fas fa-plus-circle nav-link text-light font-weight-bold text-dark rounded mr-3 mb-1" %></li>
                 <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"fas fa-sign-out-alt nav-link text-light　font-weight-bold text-dark rounded mb-1" %></li>
               <% else %>
                 <li><%= link_to 'About', about_path, class:"fab fa-adn nav-link text-light font-weight-bold text-dark rounded mr-3 mb-1" %></li>

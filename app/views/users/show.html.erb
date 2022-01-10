@@ -1,5 +1,5 @@
 <div class="container">
-  <div class = "flash_message text-center text-success"><%= flash[:success] %></div>
+  <!--<div class = "flash_message text-center text-success"><%#= flash[:success] %></div>-->
   <h3 class="text-decoration-underline"><u>マイページ</u></h3>
   <div class="row">
     <h5 class="font-weight-bold col-2 align-self-center">登録情報</h5>
@@ -28,7 +28,7 @@
     <div class="col-2">
       <h5 class="font-weight-bold">投稿</h5>
     </div>
-    <div class="col-5"><%= link_to "一覧を見る", user_path, class:"btn btn-outline-primary col-xs-3 offset-xs-3" %></div>
+    <div class="col-5"><%= link_to "一覧を見る", posts_path, class:"btn btn-outline-primary col-xs-3 offset-xs-3" %></div>
   </div>
   <div class="row pt-3">
     <div class="col-2">
