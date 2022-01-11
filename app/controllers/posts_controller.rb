@@ -1,8 +1,10 @@
 class PostsController < ApplicationController
   
   def index
-    @posts = Post.all
+    @user = User.find(params[:user_id])
+    @posts = @user.posts
     @tag_list = Tag.all
+    # @user = current_user
   end
   
   def new
@@ -52,7 +54,7 @@ class PostsController < ApplicationController
         relation.delete
       end
       @post.save_tag(tag_list)
-      redirect_to posts_path(@post.id)
+      redirect_to posts_path(user_id: current_user.id)
       flash[:success] = "変更を保存しました！"
     else
       render :edit
@@ -70,4 +72,7 @@ class PostsController < ApplicationController
     params.require(:post).permit(:title, :comment, :image, :tag, :site)
   end
   
+  # def user_params
+  #   params.require(:user).permit(:nickname)
+  # end
 end

@@ -33,6 +33,14 @@ class Post < ApplicationRecord
       self.tags << new_post_tag
     end
   end
-
-
+  
+  def self.search(search, word)
+    if search == "perfect_match"
+      @post = Post.where(title: "#{word}")
+    elsif search == "partial_match"
+      @post = Post.where("title LIKE?","%#{word}%")
+    else
+      @post = Post.all
+    end
+  end
 end

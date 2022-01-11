@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="d-flex align-items-center justify-content-center">
+      <%= render 'searches/form' %>
+    </div>
+</div>
+
+<h3><%= @range %> カテゴリで "<%= @word %>"での検索結果</h3>
+<!--Posts一覧 -->
+<table class="table table-hover table-inverse">
+　<% if @range == 'Posts' %>
+    <thead>
+      <tr>
+       <th>投稿画像</th>
+       <th>投稿タイトル</th>
+       <th>コメント</th>
+       <th colspan="3"></th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <% @post.each do |post| %>
+        <tr>
+          <td>
+           <%= link_to(post.user) do %>
+              <%= attachment_image_tag(post, :image, size: "50x50", format: "jpeg") %>
+           <% end %>
+          </td>
+          <td><%= link_to post.title, post, class: "post_#{post.id}" %></td>
+          <td><%= post.title %></td>
+          <td><%= post.comment %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% else %>
+    <!--PostTag一覧 -->
+    <thead>
+      <tr>
+        <th>タグ名</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @tags.each do |tag| %>
+        <tr>
+          <td>
+            <% @tags.each do |tag| %>
+              <%= link_to tag.tag_name, search_tag_path(tag_id: tag.id) %><%= "(#{PostTag.where(tag_id: tag.id).count})" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% end %>
+</table>

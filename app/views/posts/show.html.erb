@@ -5,7 +5,7 @@
     <div class="offset-1 col-11 mt-5 h4">投稿詳細</div>
   </div>
   <div class="row mt-5">
-    <%= attachment_image_tag(@post, :image, size: "500x500", format: "jpeg") %>
+    <%= attachment_image_tag(@post, :image, size: "300x300", format: "jpeg") %>
     <div class="col-md-5 offset-1">
       <table class="table table-borderless">
         <tr>
@@ -25,16 +25,14 @@
           <td>タグ</td>
           <td>
             <% @post_tags.each do |tag| %>
-              <%= link_to tag.name, search_tag_path(tag_id: tag.id) %><%= "(#{tag.posts.count})" %>
+              <%= link_to tag.tag_name, search_tag_path(tag_id: tag.id) %><%= "(#{tag.posts.count})" %>
             <% end %>
           </td>
         </tr>
       </table>
-      <div class="row pl-4">
-        <td><%= link_to '編集する', edit_post_path(@post), class: "btn btn-success center-block" %>
-      </div>
       <div class='row pl-4'>
         <% if @post.user == current_user %>
+          <td><%= link_to '編集する', edit_post_path(@post), class: "btn btn-success center-block" %></td>
           <td><%= link_to "削除", post_path(@post), method: :delete, class: "btn btn-danger center-block" %></td>
         <% end %>
       </div>

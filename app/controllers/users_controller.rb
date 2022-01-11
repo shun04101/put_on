@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   
   #会員マイページ画面を表示
   def show
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
   #会員情報編集
