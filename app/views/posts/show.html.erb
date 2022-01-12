@@ -5,9 +5,9 @@
     <div class="offset-1 col-11 mt-5 h4">投稿詳細</div>
   </div>
   <div class="row mt-5">
-    <%= attachment_image_tag(@post, :image, size: "300x300", format: "jpeg") %>
-    <div class="col-md-5 offset-1">
-      <table class="table table-borderless">
+    <%= attachment_image_tag(@post, :image, size: "200x200", format: "jpeg") %>
+    <div class="col-md-7 offset-2">
+      <table class="table table-hover">
         <tr>
           <td>タイトル</td>
           <td><%= @post.title %></td>
@@ -31,8 +31,8 @@
       </table>
       <div class='row pl-4'>
         <% if @post.user == current_user %>
-          <td><%= link_to '編集する', edit_post_path(@post), class: "btn btn-success center-block" %></td>
-          <td><%= link_to "削除", post_path(@post), method: :delete, class: "btn btn-danger center-block" %></td>
+          <td><%= link_to '編集する', edit_post_path(@post), class: "btn btn-success center-block mx-3" %></td>
+          <td><%= link_to "削除", post_path(@post), method: :delete, class: "btn btn-danger center-block mx-3" %></td>
         <% end %>
       </div>
     </div>

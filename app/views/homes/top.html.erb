@@ -1,22 +1,26 @@
-  <div class="top_container">
-    <!-- タイトル -->
-    <div class="top_title">
-      <span class="top-logo"></span>
-    </div>
-    <div class="top_contents scroll">
-      <!-- 投稿 -->
-      <div class="top_block">
-        <div class="top_block-text">
-            <div class="in-pict">
-              <% @posts.each do |post| %>
-                <%= attachment_image_tag(post, :image, size: "300x300", format: "jpeg") %>
+
+<div class="texts-wrapper">
+  <div class="contents-title text-center">
+    <h3>タイムライン</h3>
+    <div class="row">
+      <% @posts.each do |post| %>
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="card card-scale_animation">
+            <%= link_to post_path(post.id) do %>
+              <%= attachment_image_tag(post, :image, format: "jpeg", fallback:"no-image-icon.jpeg", class:"card-img-top") %>
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><%= post.user.nickname %></h5>
+              <h5 class="card-title"><%= post.title %></h5>
+              <p class="card-text">
                 <% post.tags.each do |tag| %>
-                  <%= link_to tag.tag_name, search_tag_path(tag_id: tag.id) %><%= "(#{tag.posts.count})" %>
+                  <i class="fas fa-tag"><%= link_to tag.tag_name, search_tag_path(tag_id: tag.id) %><%= "(#{tag.posts.count})" %></i>
                 <% end %>
-              <% end %>
+              </p>
             </div>
           </div>
         </div>
-      </div>
+      <% end %>
     </div>
   </div>
+ </div>
