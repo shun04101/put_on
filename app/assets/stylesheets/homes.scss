@@ -7,14 +7,10 @@ $baseColor:   #58aeed; //ベースカラー
   padding:0;
   background: #ffffff;
   overflow: hidden;
-  // max-width: 400px;
+  max-width: 1200px;
   margin: 20px auto;
   font-size: 80%;
   border: solid 1px #eeeeee;
-
-  a {
-    color: $baseColor;
-  }
 
   /* タイトル部分 */
   .top_title {
@@ -29,12 +25,8 @@ $baseColor:   #58aeed; //ベースカラー
       width: 50px;
       height: 50px;
       display: block;
-      background: url(../logo.png) center no-repeat;
+      // background: url(../logo.png) center no-repeat;
       background-image: image-url('logo.png') center no-repeat;
-    }
-
-    span {
-      font-size: 20px;
     }
   }
 
@@ -56,20 +48,6 @@ $baseColor:   #58aeed; //ベースカラー
       overflow: hidden;
       &:last-child {
         border-bottom: solid 0px;
-      }
-      /* アイコン画像 */
-      figure {
-        width: 50px;
-        padding: 0;
-        margin: 0;
-        float: left;
-        width: 50px;
-        /* 正方形を用意 */
-        img{
-          border-radius: 50%;
-          width: 50px;
-          height: 50px;
-        }
       }
       /* 投稿 */
       .top_block-text {
