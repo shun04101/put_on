@@ -1,3 +1,98 @@
-// Place all the styles related to the homes controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@charset "UTF-8";
+
+// color
+$baseColor:   #58aeed; //ベースカラー
+
+.top_container {
+  padding:0;
+  background: #ffffff;
+  overflow: hidden;
+  // max-width: 400px;
+  margin: 20px auto;
+  font-size: 80%;
+  border: solid 1px #eeeeee;
+
+  a {
+    color: $baseColor;
+  }
+
+  /* タイトル部分 */
+  .top_title {
+    background: $baseColor;
+    padding: 10px;
+    text-align: center;
+    font-size: 150%;
+    color: #ffffff;
+
+    .top-logo {
+      margin:  0 auto;
+      width: 50px;
+      height: 50px;
+      display: block;
+      background: url(../logo.png) center no-repeat;
+      background-image: image-url('logo.png') center no-repeat;
+    }
+
+    span {
+      font-size: 20px;
+    }
+  }
+
+  /* タイムライン部分 */
+  .top_contents {
+    overflow: hidden;
+    position: relative;
+    line-height: 135%;
+    &.scroll {
+      height: 500px;
+      overflow-y: scroll;
+    }
+    .top_block {
+      width: 100%;
+      display: block;
+      padding: 10px;
+      margin-bottom: 5px;
+      border-bottom: solid 1px #eeeeee;
+      overflow: hidden;
+      &:last-child {
+        border-bottom: solid 0px;
+      }
+      /* アイコン画像 */
+      figure {
+        width: 50px;
+        padding: 0;
+        margin: 0;
+        float: left;
+        width: 50px;
+        /* 正方形を用意 */
+        img{
+          border-radius: 50%;
+          width: 50px;
+          height: 50px;
+        }
+      }
+      /* 投稿 */
+      .top_block-text {
+        margin: 0;
+        position: relative;
+        margin-left: 60px;
+        padding-right: 10px;
+        .text {
+          margin: 5px 0;
+          .in-pict img{
+            border-radius: 20px;
+            -webkit-border-radius: 20px;
+            -moz-border-radius: 20px;
+            margin: 5px 0;
+            width: 95%;
+            height: 200px;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+// ------------------Aboutページ--------------------

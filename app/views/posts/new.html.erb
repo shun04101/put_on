@@ -2,9 +2,12 @@
 <div class='container'>
   <div class='row'>
     <div class="col-11">
-      <h4 class="row offset-1 my-5">コーディネート新規登録</h4>
+      <h4 class="row offset-5 my-5">コーディネート新規登録</h4>
       <%= form_with model: @post, url: new_post_path, local: true do |f| %>
-        <%#= render 'layouts/error_messages', model: f.object %>
+        
+        <div>
+          <p>投稿内容</p>
+        </div>
         
         <div class="row form-group">
           <%= f.label :コーディネート画像, class: "offset-2 col-3" %>
@@ -18,12 +21,16 @@
 
         <div class="row form-group">
           <%= f.label :コメント, class: "offset-2 col-3" %>
-          <%= f.text_area :comment, placeholder:"ここにコメントを書いてください", class: 'form-control col-4' %>
+          <%= f.text_area :comment, placeholder:"コーディネートのポイント", class: 'form-control col-4' %>
+        </div>
+        
+        <div>
+          <p>購入場所・リンク</p>
         </div>
         
         <div class="row form-group">
-          <%= f.label :購入場所リンク, class: "offset-2 col-3" %>
-          <%= f.text_area :site, placeholder:"洋服を購入したサイトのURLを張ってください", class: 'form-control col-4' %>
+          <%= f.label :トップス, class: "offset-2 col-3" %>
+          <%= f.text_area :site, placeholder:"例(トップス：〜〜.com)", class: 'form-control col-4' %>
         </div>
         
         <div class="row form-group">

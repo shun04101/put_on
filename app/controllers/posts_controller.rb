@@ -1,15 +1,13 @@
 class PostsController < ApplicationController
   
   def index
-    @user = User.find(params[:user_id])
+    @user = User.find_by(id: params[:user_id])
     @posts = @user.posts
     @tag_list = Tag.all
-    # @user = current_user
   end
   
   def new
     @post = Post.new
-    # @user = User.find(params[:user_id])
   end
   
   def create
@@ -18,7 +16,7 @@ class PostsController < ApplicationController
     tag_list = params[:post][:tag_name].split(',')
     if @post.save
       @post.save_tag(tag_list)
-      redirect_to posts_path(@post.id)
+      redirect_to posts_path(@post.id, user_id: @post.user.id)
       flash[:success] = "コーディネートを新規登録しました！"
     else
       render :new
@@ -54,7 +52,8 @@ class PostsController < ApplicationController
         relation.delete
       end
       @post.save_tag(tag_list)
-      redirect_to posts_path(user_id: current_user.id)
+      # redirect_to posts_path(user_id: current_user.id)
+      redirect_to user_posts_path(@post.user.id)
       flash[:success] = "変更を保存しました！"
     else
       render :edit
@@ -64,15 +63,12 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to posts_path
+    redirect_to posts_path(user_id: @post.user.id)
   end
   
   private
   def post_params
     params.require(:post).permit(:title, :comment, :image, :tag, :site)
   end
-  
-  # def user_params
-  #   params.require(:user).permit(:nickname)
-  # end
+
 end

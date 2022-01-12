@@ -1,0 +1,6 @@
+class TimelineController < ApplicationController
+  def index
+    @user_ids = current_user.followings.ids #[1,2]
+    @posts = Post.where(user_id: @user_ids.push(current_user.id))
+  end
+end

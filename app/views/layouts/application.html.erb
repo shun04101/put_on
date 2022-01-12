@@ -11,10 +11,11 @@
 
   <body>
     <header>
-      <nav class="navbar navbar-expand-lg navbar-light">
+      <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#a9ceec">
         <div class="container">
           <%= link_to root_path, class:"navbar-brand text-dark" do %>
-            <h2 style="font-family: cursive;"><span>Put on…</span></h2>
+            <div class="logo-icon"></div>
+            <!--<h2 style="font-family: cursive;"><span>Put on…</span></h2>-->
           <% end %>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -22,15 +23,15 @@
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
-                <div class="mt-1 mr-5"><b>ようこそ、<%= current_user.last_name %>さん！</b></div>
+                <div class="mt-1 mr-5"><b>ようこそ、<%= current_user.nickname %>さん！</b></div>
+                <li><%= render 'searches/form' %></li>
                 <li><%= link_to 'マイページ', user_path(current_user.id), class:"fas fa-address-card nav-link text-light font-weight-bold text-dark rounded mr-3 mb-1"%></li>
-                <li><%= link_to "検索", root_path, class:"fas fa-search nav-link text-light font-weight-bold text-dark rounded mr-3 mb-1" %></li>
-                <li><%= link_to 'タイムライン', root_path, class:"fas fa-stream nav-link text-light font-weight-bold text-dark rounded mr-3 mb-1" %></li>
+                <li><%= link_to 'タイムライン', timeline_path, class:"fas fa-stream nav-link text-light font-weight-bold text-dark rounded mr-3 mb-1" %></li>
                 <li><%= link_to '新規投稿', new_post_path, class:"fas fa-plus-circle nav-link text-light font-weight-bold text-dark rounded mr-3 mb-1" %></li>
                 <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"fas fa-sign-out-alt nav-link text-light　font-weight-bold text-dark rounded mb-1" %></li>
               <% else %>
+                <li><%= render 'searches/form' %></li>
                 <li><%= link_to 'About', about_path, class:"fab fa-adn nav-link text-light font-weight-bold text-dark rounded mr-3 mb-1" %></li>
-                <li><%= link_to "検索", root_path, class:"fas fa-search nav-link text-light font-weight-bold text-dark rounded mr-3 mb-1" %></li>
                 <li><%= link_to "新規登録", new_user_registration_path, class:"fas fa-user-plus nav-link text-light font-weight-bold text-dark rounded mr-3 mb-1" %></li>
                 <li><%= link_to "ログイン", new_user_session_path, class:"fas fa-sign-in-alt nav-link text-light font-weight-bold text-dark rounded mb-1" %></li>
               <% end %>
