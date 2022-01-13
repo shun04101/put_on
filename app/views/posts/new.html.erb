@@ -29,14 +29,35 @@
         </div>
         
         <div class="row form-group">
-          <%= f.label :トップス, class: "offset-2 col-3" %>
-          <%= f.text_area :site, placeholder:"例(トップス：〜〜.com)", class: 'form-control col-4' %>
+          <div class="nested-fields">
+            <%= f.fields_for :sites do |site| %>
+              <%= render "posts/site_fields", f: site %>
+              <!--<%#= f.select :info, options_for_select(Site.infos.map { |k, _v| [I18n.t("enums.site.info.#{k}"), k] }), {include_blank: true}, { class: 'form-control col-4', data: {} } %>-->
+              <!--<%#= f.text_area :link, placeholder: "(例)トップス：https~~／トップス：(店舗サイトリンク)", class: "form-control col-4" %>-->
+              <!--<div class="col-2">-->
+              <!--  <%#= link_to_remove_association "削除", f, class: "btn btn-secondary" %>-->
+              <!--</div>-->
+            <% end %>
+          </div>
+          
+          <div id="detail-association-insertion-point"></div>
+          
+          <div>
+            <%= link_to_add_association "+フォームを追加", f, :sites,
+            class:"btn btn-secondary",
+            data: {
+              association_insertion_node: '#detail-association-insertion-point',
+              association_insertion_method: 'after'
+            } %>
+          </div>
         </div>
         
-        <div class="row form-group">
-          <%= f.label"タグ (,で区切ると複数タグ登録できます)", class: "offset-2 col-3" %>
-          <%= f.text_field :tag_name, placeholder:"例(シャツ,春物,赤)", value: @tag_list, class:"form-control col-4"%>
-        </div>
+        <%= f.fields_for :tags do |tag| %>
+          <div class="row form-group">
+            <%= tag.label"タグ (,で区切ると複数タグ登録できます)", class: "offset-2 col-3" %>
+            <%= tag.text_field :tag_name, placeholder:"例(シャツ,春物,赤)", value: @tag_list, class:"form-control col-4"%>
+          </div>
+        <% end %>
 
         <div class="form-group">
           <%= f.submit "新規登録", class: 'btn btn-success btn100 offset-5' %>

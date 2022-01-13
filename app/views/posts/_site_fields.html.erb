@@ -1,0 +1,10 @@
+
+<div class="nested-fields">
+  <div class="mx-auto">
+    <div class="col-12"><%= f.select :info, options_for_select(Site.infos.map { |k, _v| [I18n.t("enums.site.info.#{k}"), k] }), {include_blank: true}, { class: 'form-control', data: {} } %></div>
+    <div class="col-12"><%= f.text_field :link, class: "form-control", placeholder: "購入サイトリンク or 店舗名を添付" %></div>
+    <div class="offset-1 col-5 px-0 w-auto">
+      <%= link_to_remove_association "削除", f, class: "btn btn-secondary btn-block" %>
+    </div>
+  </div>
+</div>

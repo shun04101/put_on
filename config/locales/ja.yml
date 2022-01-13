@@ -1,0 +1,8 @@
+ja:
+  enums:              #enum型に対する日本語定義であることを明示するために記述
+    site:           #モデル名を指定
+      info:           #カラム名を指定
+        tops: トップス     #Enumの名前定義①
+        bottoms: ボトムス   #Enumの名前定義②
+        accessory: アクセサリー
+        other: その他

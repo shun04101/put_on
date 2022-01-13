@@ -17,8 +17,10 @@
           <td><%= @post.comment %></td>
         </tr>
         <tr>
-          <td>リンク</td>
-          <td><%= Rinku.auto_link(@post.site, :all, 'target="_blank"').html_safe %></td>
+          <% @post.sites.each do |site| %>
+            <td><%= site.info_i18n %></td>
+            <td><%= Rinku.auto_link(site.link, :all, 'target="_blank"').html_safe %></td>
+          <% end %>
         </tr>
         <tr>
           <td>タグ</td>

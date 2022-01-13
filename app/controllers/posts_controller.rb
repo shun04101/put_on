@@ -8,12 +8,16 @@ class PostsController < ApplicationController
   
   def new
     @post = Post.new
+    # 親モデル.子モデル.buildで子モデルのインスタンス作成
+    @sites = @post.sites.build
+    @tags = @post.tags.build
   end
   
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    tag_list = params[:post][:tag_name].split(',')
+    tag_list = params[:post][:tags_attributes]["0"]["tag_name"].split(',')
+    
     if @post.save
       @post.save_tag(tag_list)
       redirect_to posts_path(@post.id, user_id: @post.user.id)
@@ -51,7 +55,7 @@ class PostsController < ApplicationController
       @old_relations.each do |relation|
         relation.delete
       end
-      @post.save_tag(tag_list)
+      @post.update_tag(tag_list)
       # redirect_to posts_path(user_id: current_user.id)
       redirect_to user_posts_path(@post.user.id)
       flash[:success] = "変更を保存しました！"
@@ -68,7 +72,13 @@ class PostsController < ApplicationController
   
   private
   def post_params
-    params.require(:post).permit(:title, :comment, :image, :tag, :site)
+    params.require(:post).permit(
+      :title,
+      :comment,
+      :image,
+      tags_attributes: [:tag_name, :_destroy],
+      sites_attributes: [:link, :info, :_destroy]
+    )
   end
 
 end

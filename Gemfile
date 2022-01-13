@@ -72,3 +72,4 @@ gem "enum_help"
 gem 'rails-i18n'
 gem 'rinku'
 gem 'slim-rails'
+gem 'cocoon'
