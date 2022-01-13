@@ -1,6 +1,6 @@
 <div class="container">
   <!--<div class = "flash_message text-center text-success"><%#= flash[:success] %></div>-->
-  <h3 class="text-decoration-underline"><u><%= @user.nickname %>さんのマイページ</u></h3><%= render 'searches/form' %>
+  <h3 class="text-decoration-underline"><u><%= @user.nickname %>さんのマイページ</u></h3>
   <p class="text-small"><%= link_to @user.followings.count, user_followings_path(@user) %>フォロー <%= link_to @user.followers.count, user_followers_path(@user) %>フォロワー</p>
   <%# if @user == current_user %>
   <% if user_signed_in? && current_user.id.to_s == params[:id] %>

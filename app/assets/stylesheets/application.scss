@@ -28,3 +28,9 @@
   background-size: cover;
   background-position: center;
 }
+
+body {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}

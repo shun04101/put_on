@@ -1,41 +1,23 @@
 <!--　投稿詳細画面 -->
-<div class="container">
-  <!--<div class="text-success"><strong style="font-size: 20px;"><%#= flash[:success] %></strong></div>-->
-  <div class="row">
-    <div class="offset-1 col-11 mt-5 h4">投稿詳細</div>
-  </div>
-  <div class="row mt-5">
-    <%= attachment_image_tag(@post, :image, size: "200x200", format: "jpeg") %>
-    <div class="col-md-7 offset-2">
-      <table class="table table-hover">
-        <tr>
-          <td>タイトル</td>
-          <td><%= @post.title %></td>
-        </tr>
-        <tr>
-          <td>コメント</td>
-          <td><%= @post.comment %></td>
-        </tr>
-        <tr>
-          <% @post.sites.each do |site| %>
-            <td><%= site.info_i18n %></td>
-            <td><%= Rinku.auto_link(site.link, :all, 'target="_blank"').html_safe %></td>
-          <% end %>
-        </tr>
-        <tr>
-          <td>タグ</td>
-          <td>
+
+<!--<div class="text-success"><strong style="font-size: 20px;"><%#= flash[:success] %></strong></div>-->
+<h4>投稿詳細</h4>
+<div class="card mb-3">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <%= attachment_image_tag(@post, :image, size: "400x400", format: "jpeg", class:"bd-placeholder-img") %>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">タイトル | <%= @post.title %></h5>
+        <p class="card-text">コメント | <%= @post.comment %></p>
+        <p class="card-text">
+          <small class="text-muted">
             <% @post_tags.each do |tag| %>
-              <%= link_to tag.tag_name, search_tag_path(tag_id: tag.id) %><%= "(#{tag.posts.count})" %>
+              <i class="fas fa-tag"><%= link_to tag.tag_name, search_tag_path(tag_id: tag.id) %><%= "(#{tag.posts.count})" %></i>
             <% end %>
-          </td>
-        </tr>
-      </table>
-      <div class='row pl-4'>
-        <% if @post.user == current_user %>
-          <td><%= link_to '編集する', edit_post_path(@post), class: "btn btn-success center-block mx-3" %></td>
-          <td><%= link_to "削除", post_path(@post), method: :delete, class: "btn btn-danger center-block mx-3" %></td>
-        <% end %>
+          </small>
+        </p>
       </div>
     </div>
   </div>
