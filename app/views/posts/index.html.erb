@@ -1,19 +1,22 @@
 <!-- 投稿一覧画面 -->
 
-<!--タグリスト-->
-<% @tag_list.each do |list|%>
-  <% if list.post_tags.count > 0 %>
-    <%=link_to list.tag_name, search_tag_path(tag_id: list.id) %>
-    <%= "(#{list.posts.count})" %>
+<div class="container">
+  <!--タグリスト-->
+  <% @tag_list.each do |list|%>
+    <% if list.post_tags.count > 0 %>
+      <%=link_to list.tag_name, search_tag_path(tag_id: list.id) %>
+      <%= "(#{list.posts.count})" %>
+    <% end %>
   <% end %>
-<% end %>
-<h3 class="page-header">投稿一覧</h3>
+  <h3 class="page-header">投稿一覧</h3>
   <ul class="list-group">
     <% @posts.each do |post| %>
       <li class="list-group-item">
         <span class="badge text-danger"><%= link_to "[詳細]", post_path(post.id) %></span>
-        <%= @user.nickname %> | <%= post.title %> | <%= post.comment %>
+        <%= @user.nickname %> | <%= post.title %> | <%= post.comment.truncate(25) %>
         <i class="fas fa-tag"><%= post.tags.map(&:tag_name).join(', ') %></i>
+        <i class="far fa-clock"><%= time_ago_in_words(post.created_at)+"前" %></i>
       </li>
     <% end %>
   </ul>
+</div>

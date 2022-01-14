@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   
   def index
     @user = User.find_by(id: params[:user_id])
-    @posts = @user.posts
+    @posts = @user.posts.all.order(created_at: :desc)
     @tag_list = Tag.all
   end
   
@@ -51,7 +51,7 @@ class PostsController < ApplicationController
     # 入力されたタグを受け取る
     tag_list = params[:post][:tag_name].split(',')
     if @post.update(post_params)
-      @old_relations=PostTag.where(post_id: @post.id)
+      @old_relations = PostTag.where(post_id: @post.id)
       @old_relations.each do |relation|
         relation.delete
       end

@@ -34,3 +34,32 @@ body {
   flex-flow: column;
   min-height: 100vh;
 }
+
+
+//ヘッダー
+.navbar-nav li a{
+	position: relative;
+}
+
+.navbar-nav li.current a,
+.navbar-nav li a:hover{
+	color:#0481A2;
+}
+
+.navbar-nav li a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+    width: 80%;
+    height: 2px;
+    background:black;
+    transition: all .3s;
+    transform: scale(0, 1);
+    transform-origin: center top;
+}
+
+.navbar-nav li.current a::after,
+.navbar-nav li :hover::after {
+    transform: scale(1, 1);
+}

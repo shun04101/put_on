@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   #会員マイページ画面を表示
   def show
     @user = User.find(params[:id])
+    # @posts = @user.posts
+    @posts = @user.posts.all.order(created_at: :desc).limit(2)
   end
 
   #会員情報編集

@@ -16,6 +16,7 @@
                   <i class="fas fa-tag"><%= link_to tag.tag_name, search_tag_path(tag_id: tag.id) %><%= "(#{tag.posts.count})" %></i>
                 <% end %>
               </p>
+              <p><i class="far fa-clock"><%= time_ago_in_words(post.created_at)+"前" %></i></p>
             </div>
           </div>
         </div>

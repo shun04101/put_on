@@ -1,6 +1,6 @@
 <!--　投稿詳細画面 -->
 
-<!--<div class="text-success"><strong style="font-size: 20px;"><%#= flash[:success] %></strong></div>-->
+<div class="text-success"><strong style="font-size: 20px;"><%= flash[:success] %></strong></div>
 <h4>投稿詳細</h4>
 <div class="card mb-3">
   <div class="row no-gutters">
@@ -18,6 +18,18 @@
             <% end %>
           </small>
         </p>
+        <p class="card-text">
+          <% @post.sites.each do |site| %>
+            <%#= link_to site.info_i18n, Rinku.auto_link(site.link, :all, 'target="_blank"').html_safe %>
+            <%= site.info_i18n %>
+            <%= Rinku.auto_link(site.link, :all, 'target="_blank"').html_safe %>
+          <% end %>
+        </p>
+        <p><i class="far fa-clock"><%= time_ago_in_words(@post.created_at)+"前" %></i></p>
+        <% if @post.user == current_user %>
+          <td><%= link_to '編集する', edit_post_path(@post), class: "btn btn-outline-success center-block mx-3" %></td>
+          <td><%= link_to "削除", post_path(@post), method: :delete, class: "btn btn-outline-danger center-block mx-3" %></td>
+        <% end %>
       </div>
     </div>
   </div>

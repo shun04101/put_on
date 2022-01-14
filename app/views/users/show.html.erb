@@ -1,14 +1,15 @@
 <div class="container">
-  <!--<div class = "flash_message text-center text-success"><%#= flash[:success] %></div>-->
+  <div class = "flash_message text-center text-success"><%= flash[:success] %></div>
   <h3 class="text-decoration-underline"><u><%= @user.nickname %>さんのマイページ</u></h3>
   <p class="text-small"><%= link_to @user.followings.count, user_followings_path(@user) %>フォロー <%= link_to @user.followers.count, user_followers_path(@user) %>フォロワー</p>
-  <%# if @user == current_user %>
+  
+  <!--ログインユーザーのマイページ-->
   <% if user_signed_in? && current_user.id.to_s == params[:id] %>
     <div class="row">
       <h5 class="font-weight-bold col-2 align-self-center">登録情報</h5>
       <div class="col-5"><%= link_to "編集する", edit_user_path, class:"btn btn-outline-success w-25" %></div>
     </div>
-  
+    
     <table class="table table-light col-md-6 mt-3">
       <tr>
         <td class="info border border-dark table-active">氏名</td>
@@ -27,21 +28,38 @@
         <td class="border border-dark"><%= @user.email %></td>
       </tr>
     </table>
-    <div class="row pt-3">
-      <div class="col-2"><h5 class="font-weight-bold">投稿</h5></div>
-      <div class="col-5"><%= link_to "一覧を見る", posts_path(user_id: @user.id), class:"btn btn-outline-primary col-xs-3 offset-xs-3" %></div>
-    </div>
+    <h4 class="page-header">最新2件の投稿</h4>
+    <ul class="list-group">
+      <% @posts.each do |post| %>
+        <li class="list-group-item">
+          <span class="badge text-danger"><%= link_to "[詳細]", post_path(post.id) %></span>
+          <%= @user.nickname %> | <%= post.title %> | <%= post.comment.truncate(25) %>
+          <i class="fas fa-tag"><%= post.tags.map(&:tag_name).join(', ') %></i>
+          <i class="far fa-clock"><%= time_ago_in_words(post.created_at)+"前" %></i>
+        </li>
+      <% end %>
+    <div class="col-5"><%= link_to "全投稿を見る", posts_path(user_id: @user.id), class:"btn btn-outline-primary col-xs-3 offset-xs-3" %></div>
+    <!--↑ログインユーザーのマイページ↑-->
+    
+  <!--↓他のユーザーのマイページ↓-->
   <% else %>
-    <h4 class="info border border-dark table-active">ニックネーム</h4>
-    <p class="border border-dark"><%= @user.nickname %></p>
+    <h4 class="">ニックネーム：<%= @user.nickname %></h4>
     <% if current_user.following?(@user) %>
       <%= link_to "フォロー外す", user_relationships_path(@user.id), method: :delete, class:"btn btn-outline-danger" %>
     <% else %>
       <%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class:"btn btn-outline-primary" %>
     <% end %>
-    <div class="row pt-3">
-      <div class="col-2"><h5 class="font-weight-bold">投稿</h5></div>
-      <div class="col-5"><%= link_to "一覧を見る", posts_path(user_id: @user.id), class:"btn btn-outline-primary col-xs-3 offset-xs-3" %></div>
-    </div>
+    <h4 class="page-header">最新2件の投稿</h4>
+    <ul class="list-group">
+      <% @posts.each do |post| %>
+        <li class="list-group-item">
+          <span class="badge text-danger"><%= link_to "[詳細]", post_path(post.id) %></span>
+          <%= @user.nickname %> | <%= post.title %> | <%= post.comment.truncate(25) %>
+          <i class="fas fa-tag"><%= post.tags.map(&:tag_name).join(', ') %></i>
+          <i class="far fa-clock"><%= time_ago_in_words(post.created_at)+"前" %></i>
+        </li>
+      <% end %>
+    <div class="col-5"><%= link_to "全投稿を見る", posts_path(user_id: @user.id), class:"btn btn-outline-primary col-xs-3 offset-xs-3" %></div>
   <% end %>
+  <!--↑他のユーザーのマイページ↑-->
 </div>
