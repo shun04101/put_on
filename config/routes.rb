@@ -16,14 +16,17 @@ Rails.application.routes.draw do
     get 'followers' => 'relationships#followers', as: 'followers'
   end
   
-  resources :posts, only: [:new, :create, :index, :show, :edit, :destroy]
   post "posts/new", to: "posts#create"
   patch "posts/:id/edit", to: "posts#update"
+  resources :posts, only: [:new, :create, :index, :show, :edit, :destroy] do
+    resources :bookmarks, only: [:create, :destroy]
+  end
+  
   # タグの検索で使用する
   get "search_tag"=>"posts#search_tag"
-  
-  
+
   get 'search', to: 'searches#search'
+
   get '/timeline', to: 'timeline#index'
 
 end

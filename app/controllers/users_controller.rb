@@ -5,6 +5,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     # @posts = @user.posts
     @posts = @user.posts.all.order(created_at: :desc).limit(2)
+    @bookmarks = Bookmark.where(user_id: current_user.id)
   end
 
   #会員情報編集

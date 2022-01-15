@@ -20,10 +20,10 @@
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
-                <div class="mt-1 mr-5"><b>ようこそ、<%= current_user.nickname %>さん！</b></div>
+                <!--<div class="mt-1 mr-5" style="font-size: 16px;">ようこそ、<%#= current_user.nickname %>さん！</div>-->
                 <li><%= render 'searches/form' %></li>
                 <li><%= link_to 'マイページ', user_path(current_user.id), class:"fas fa-address-card nav-link text-light font-weight-bold text-dark rounded mr-3 mb-1"%></li>
                 <li><%= link_to 'タイムライン', timeline_path, class:"fas fa-stream nav-link text-light font-weight-bold text-dark rounded mr-3 mb-1" %></li>

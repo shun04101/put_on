@@ -17,6 +17,9 @@
                 <% end %>
               </p>
               <p><i class="far fa-clock"><%= time_ago_in_words(post.created_at)+"前" %></i></p>
+              <div id="bookmark_button_<%= post.id %>">
+                <%= render "bookmarks/bookmark", post: post %>
+              </div>
             </div>
           </div>
         </div>

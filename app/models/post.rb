@@ -12,6 +12,8 @@ class Post < ApplicationRecord
   accepts_nested_attributes_for :sites, allow_destroy: true
   validates_associated :sites
   
+  has_many :bookmarks, dependent: :destroy
+  
   validates :title, presence: true
   validates :comment, presence: true
   validates :image, presence: true
@@ -54,4 +56,10 @@ class Post < ApplicationRecord
       @post = Post.all
     end
   end
+  
+  # 既にブックマークしていないか検証
+  def bookmarked_by?(user)
+    bookmarks.where(user_id: user).exists?
+  end
+  
 end

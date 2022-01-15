@@ -39,6 +39,31 @@
         </li>
       <% end %>
     <div class="col-5"><%= link_to "全投稿を見る", posts_path(user_id: @user.id), class:"btn btn-outline-primary col-xs-3 offset-xs-3" %></div>
+    
+    <table>
+      <caption>ブックマーク一覧</caption>
+      <thead>
+        <tr>
+          <th>投稿者名</th>
+          <th>タイトル</th>
+          <th>本文</th>
+        </tr>
+        </thead>
+        <tbody>
+          <% @bookmarks.each do |bookmark| %>
+            <tr>
+              <td><%= bookmark.post.user.nickname %></td>
+              <td>
+                <%= link_to post_path(bookmark.post) do %>
+                  <%= bookmark.post.title %>
+                <% end %>
+              </td>
+              <td><%= bookmark.post.comment %></td>
+            </tr>
+          <% end %>
+      </tbody>
+    </table>
+    
     <!--↑ログインユーザーのマイページ↑-->
     
   <!--↓他のユーザーのマイページ↓-->
