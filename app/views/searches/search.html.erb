@@ -17,7 +17,7 @@
         <tr>
           <td>
            <%= link_to(post.user) do %>
-              <%= attachment_image_tag(post, :image, size: "50x50", format: "jpeg") %>
+              <%= attachment_image_tag(post, :image, :fill, 100, 100) %>
            <% end %>
           </td>
           <td><%= link_to post.title, post, class: "post_#{post.id}" %></td>
@@ -37,9 +37,11 @@
       <% @tags.each do |tag| %>
         <tr>
           <td>
-            <% @tags.each do |tag| %>
-              <%= link_to tag.tag_name, search_tag_path(tag_id: tag.id) %><%= "(#{PostTag.where(tag_id: tag.id).count})" %>
-            <% end %>
+            <%# @tags.each do |tag| %>
+              <% if tag.post_tags.count > 0 %>
+                <%= link_to tag.tag_name, search_tag_path(tag_id: tag.id) %><%= "(#{PostTag.where(tag_id: tag.id).count})" %>
+              <% end %>
+            <%# end %>
           </td>
         </tr>
       <% end %>

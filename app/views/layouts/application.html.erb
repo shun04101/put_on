@@ -12,8 +12,10 @@
   <body>
     <header>
       <nav class="navbar navbar-expand-lg navbar-light" style="background-color:#a9ceec">
-        <div class="container">
-          <%= link_to root_path, class:"navbar-brand text-dark" do %>
+        <div class="container navbar-flex">
+          <%= render 'searches/form' %>
+          
+          <%= link_to root_path, class:"text-dark" do %>
             <div class="logo-icon"></div>
             <!--<h2 style="font-family: cursive;"><span>Put on…</span></h2>-->
           <% end %>
@@ -24,11 +26,10 @@
             <ul class="navbar-nav ml-auto">
               <% if user_signed_in? %>
                 <!--<div class="mt-1 mr-5" style="font-size: 16px;">ようこそ、<%#= current_user.nickname %>さん！</div>-->
-                <li><%= render 'searches/form' %></li>
-                <li><%= link_to 'マイページ', user_path(current_user.id), class:"fas fa-address-card nav-link text-light font-weight-bold text-dark rounded mr-3 mb-1"%></li>
-                <li><%= link_to 'タイムライン', timeline_path, class:"fas fa-stream nav-link text-light font-weight-bold text-dark rounded mr-3 mb-1" %></li>
-                <li><%= link_to '新規投稿', new_post_path, class:"fas fa-plus-circle nav-link text-light font-weight-bold text-dark rounded mr-3 mb-1" %></li>
-                <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"fas fa-sign-out-alt nav-link text-light　font-weight-bold text-dark rounded mb-1" %></li>
+                <li><%= link_to '', user_path(current_user.id), class:"fas fa-address-card nav-link text-light font-weight-bold text-dark rounded mr-3 mb-1"%></li>
+                <li><%= link_to '', timeline_path, class:"fas fa-stream nav-link text-light font-weight-bold text-dark rounded mr-3 mb-1" %></li>
+                <li><%= link_to '', new_post_path, class:"fas fa-plus-circle nav-link text-light font-weight-bold text-dark rounded mr-3 mb-1" %></li>
+                <li><%= link_to "", destroy_user_session_path, method: :delete, class:"fas fa-sign-out-alt nav-link text-light　font-weight-bold text-dark rounded mb-1" %></li>
               <% else %>
                 <li><%= render 'searches/form' %></li>
                 <li><%= link_to 'About', about_path, class:"fab fa-adn nav-link text-light font-weight-bold text-dark rounded mr-3 mb-1" %></li>

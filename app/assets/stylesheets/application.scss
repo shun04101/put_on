@@ -63,3 +63,36 @@ body {
 .navbar-nav li :hover::after {
     transform: scale(1, 1);
 }
+
+.navbar-flex {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navbar-form {
+  display: flex;
+  flex-wrap: wrap;
+  width: 300px;
+  justify-content: flex-start;
+}
+
+#navbarNavDropdown {
+  flex-grow: 0;
+}
+
+.mypage-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mypage-right, .mypage-left {
+  width: 48%;
+}
+
+.mypage-left-info {
+  margin-top: 10px;
+}
+
+.list-group {
+  margin-top: 10px;
+}

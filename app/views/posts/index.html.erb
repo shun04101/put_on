@@ -2,21 +2,37 @@
 
 <div class="container">
   <!--タグリスト-->
+  <caption>タグリスト(過去の投稿で使用されたタグ)</caption><br>
   <% @tag_list.each do |list|%>
     <% if list.post_tags.count > 0 %>
       <%=link_to list.tag_name, search_tag_path(tag_id: list.id) %>
       <%= "(#{list.posts.count})" %>
     <% end %>
   <% end %>
+  
   <h3 class="page-header">投稿一覧</h3>
-  <ul class="list-group">
-    <% @posts.each do |post| %>
-      <li class="list-group-item">
-        <span class="badge text-danger"><%= link_to "[詳細]", post_path(post.id) %></span>
-        <%= @user.nickname %> | <%= post.title %> | <%= post.comment.truncate(25) %>
-        <i class="fas fa-tag"><%= post.tags.map(&:tag_name).join(', ') %></i>
-        <i class="far fa-clock"><%= time_ago_in_words(post.created_at)+"前" %></i>
-      </li>
-    <% end %>
-  </ul>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>ニックネーム</th>
+        <th>タイトル</th>
+        <th>コメント</th>
+        <th>タグ</th>
+        <th>投稿タイミング</th>
+        <th colspan="1"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= @user.nickname %></td>
+          <td><%= post.title %></td>
+          <td><%= post.comment.truncate(15) %></td>
+          <td><i class="fas fa-tag"><%= post.tags.map(&:tag_name).join(', ') %></i></td>
+          <td><i class="far fa-clock"><%= time_ago_in_words(post.created_at)+"前" %></i></td>
+          <td><span class="badge text-danger"><%= link_to "[詳細]", post_path(post.id) %></span></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

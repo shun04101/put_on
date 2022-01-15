@@ -1,8 +1,8 @@
 <div class="container">
-  <h5>タグが<%=@tag.tag_name%>の投稿一覧</h5>
+  <h5 style="margin-top: 10px;">タグが<%=@tag.tag_name%>の投稿一覧</h5>
   
   <!--タグリスト-->
-  <p>タグリスト(過去の投稿で使用されたタグ)</p>
+  <p style="margin-bottom: auto; margin-top: 30px;">タグリスト(過去の投稿で使用されたタグ)</p>
   <% @tag_list.each do |list| %>
     <% if list.post_tags.count > 0 %>
       <%= link_to list.tag_name, search_tag_path(tag_id: list.id) %>
@@ -10,7 +10,7 @@
     <% end %>
   <% end %>
   
-  <div class="row" style="display: flex;">
+  <div class="row" style="display: flex; margin-top: 30px;">
     <% @posts.each do |post| %>
       <div class="col-12 col-md-6 col-lg-3">
         <div class="card card-scale_animation">
