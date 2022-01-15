@@ -17,9 +17,12 @@
               </p>
               <p><i class="far fa-clock"><%= time_ago_in_words(post.created_at)+"前" %></i></p>
             </div>
-            <!--<div id="bookmark_button_<%#= @post.id %>">-->
-            <!--  <%#= render "bookmarks/bookmark", post: @post %>-->
-            <!--</div>-->
+            <% if user_signed_in? %>
+              <div id="bookmark_button_<%= post.id %>">
+                <%= render "bookmarks/bookmark", post: post %>
+              </div>
+            <% else %>
+            <% end %>
           </div>
         </div>
       <% end %>

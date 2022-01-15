@@ -10,16 +10,15 @@ class PostsController < ApplicationController
     @post = Post.new
     # 親モデル.子モデル.buildで子モデルのインスタンス作成
     @sites = @post.sites.build
-    @tags = @post.tags.build
+    @tags = @post.tags.new
   end
   
   def create
+    
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    tag_list = params[:post][:tags_attributes]["0"]["tag_name"].split(',')
-    
     if @post.save
-      @post.save_tag(tag_list)
+      @post.save_tag(post_tag_name_params[:tag_name].split(','))
       redirect_to posts_path(@post.id, user_id: @post.user.id)
       flash[:success] = "コーディネートを新規登録しました！"
     else
@@ -76,9 +75,12 @@ class PostsController < ApplicationController
       :title,
       :comment,
       :image,
-      tags_attributes: [:tag_name, :_destroy],
       sites_attributes: [:link, :info, :_destroy]
     )
+  end
+  
+  def post_tag_name_params
+    params.require(:post).permit(:tag_name)
   end
 
 end

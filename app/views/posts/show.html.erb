@@ -9,7 +9,10 @@
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title">タイトル | <%= @post.title %></h5>
+        <%= link_to user_path(@post.user_id) do %>
+          <p class="card-title"><%= @post.user.nickname %></p>
+        <% end %>
+        <h5 class="card-text">タイトル | <%= @post.title %></h5>
         <p class="card-text">コメント | <%= @post.comment %></p>
         <p class="card-text">
           <small class="text-muted">
@@ -20,11 +23,16 @@
         </p>
         <p class="card-text">
           <% @post.sites.each do |site| %>
-            <%#= link_to site.info_i18n, Rinku.auto_link(site.link, :all, 'target="_blank"').html_safe %>
-            <%= site.info_i18n %>
-            <%= Rinku.auto_link(site.link, :all, 'target="_blank"').html_safe %>
+            <%#= link_to site.info_i18n, Rinku.auto_link(site.link, :all, 'target="_blank"').html_safe do %>
+            <%#= site.info_i18n %>
+            <%#= Rinku.auto_link(site.link, :all, 'target="_blank"').html_safe %>
+            <%# end %>
+            <%= link_to site.info_i18n, site.link, target: :_blank %>
           <% end %>
         </p>
+        <div id="bookmark_button_<%= @post.id %>">
+          <%= render "bookmarks/bookmark", post: @post %>
+        </div>
         <p><i class="far fa-clock"><%= time_ago_in_words(@post.created_at)+"前" %></i></p>
         <% if @post.user == current_user %>
           <td><%= link_to '編集する', edit_post_path(@post), class: "btn btn-outline-success center-block mx-3" %></td>

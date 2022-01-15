@@ -52,12 +52,10 @@
           </div>
         </div>
         
-        <%= f.fields_for :tags do |tag| %>
-          <div class="row form-group">
-            <%= tag.label"タグ (,で区切ると複数タグ登録できます)", class: "offset-2 col-3" %>
-            <%= tag.text_field :tag_name, placeholder:"例(シャツ,春物,赤)", value: @tag_list, class:"form-control col-4"%>
-          </div>
-        <% end %>
+        <div class="row form-group">
+          <%= f.label"タグ (,で区切ると複数タグ登録できます)", class: "offset-2 col-3" %>
+          <%= f.text_field :tag_name, placeholder:"例(シャツ,春物,赤)", value: @tag_list, class:"form-control col-4"%>
+        </div>
 
         <div class="form-group">
           <%= f.submit "新規登録", class: 'btn btn-success btn100 offset-5' %>
