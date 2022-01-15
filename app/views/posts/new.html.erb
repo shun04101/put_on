@@ -24,19 +24,14 @@
           <%= f.text_area :comment, placeholder:"コーディネートのポイント", class: 'form-control col-4' %>
         </div>
         
-        <div>
-          <p>購入場所・リンク</p>
+        <div class="row form-group">
+          <label class="offset-2 col-3">購入場所・リンク</label>
         </div>
         
-        <div class="row form-group">
+        <div class="row form-group" style="margin-left: 40%;">
           <div class="nested-fields">
             <%= f.fields_for :sites do |site| %>
               <%= render "posts/site_fields", f: site %>
-              <!--<%#= f.select :info, options_for_select(Site.infos.map { |k, _v| [I18n.t("enums.site.info.#{k}"), k] }), {include_blank: true}, { class: 'form-control col-4', data: {} } %>-->
-              <!--<%#= f.text_area :link, placeholder: "(例)トップス：https~~／トップス：(店舗サイトリンク)", class: "form-control col-4" %>-->
-              <!--<div class="col-2">-->
-              <!--  <%#= link_to_remove_association "削除", f, class: "btn btn-secondary" %>-->
-              <!--</div>-->
             <% end %>
           </div>
           
@@ -63,7 +58,7 @@
       <% end %>
       
       <!--ここでプレビュー用のimgタグを準備。プレビューしてない時は出現しない。-->
-        <img id="preview" style="width:40%;">
+        <img id="preview" style="width:40%; margin-left: 40%;">
         <script>
           $('#post_image').on('change', function (e) {
             var reader = new FileReader();
