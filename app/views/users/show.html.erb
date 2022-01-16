@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mypage-top">
   <div class = "flash_message text-center text-success"><%= flash[:success] %></div>
   
   <div class="mypage-content">
@@ -49,7 +49,7 @@
                 <i class="far fa-clock"><%= time_ago_in_words(post.created_at)+"前" %></i>
               </li>
             <% end %>
-          <div class="col-5"><%= link_to "全投稿を見る", posts_path(user_id: @user.id), class:"btn btn-outline-primary col-xs-3 offset-xs-3" %></div>
+          <div class="col-5"><%= link_to "全投稿を見る", posts_path(user_id: @user.id), class:"btn btn-outline-primary col-xs-3 offset-xs-3 all-post" %></div>
         <% end %>
     </div>
     
@@ -93,7 +93,7 @@
                   <%= bookmark.post.title %>
                 <% end %>
               </td>
-              <td><%= bookmark.post.comment %></td>
+              <td><%= bookmark.post.comment.truncate(15) %></td>
             </tr>
           <% end %>
       </tbody>

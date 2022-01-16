@@ -1,4 +1,5 @@
 
+// ----- Topページ -----
 .card {
   margin: 0 auto 30px;
   // max-width: 280px;
@@ -15,4 +16,94 @@
   transform: scale(1.05);
   transition: 0.5s;
   z-index: 1;
+}
+
+.texts-wrapper{
+  margin: 80px;
+}
+
+
+
+
+
+// ----- Aboutページ -----
+
+.circle {
+      border-radius: 50%;
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      border: 3px solid #999;
+      padding: 3px;
+    }
+
+// ----- About：　ゆっくりスクロール-----
+@media (prefers-reduced-motion: no-preference) {
+  :root {
+    scroll-behavior: smooth;
+  }
+}
+
+// ----- About：　ヘッダー-----
+header.masthead {
+  padding-top: 10.5rem;
+  padding-bottom: 6rem;
+  text-align: center;
+  color: #fff;
+  background-image: url("../assets/header-md.jpg");
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  background-size: cover;
+}
+
+header.masthead .masthead-subheading {
+  font-size: 1.5rem;
+  font-style: italic;
+  line-height: 1.5rem;
+  margin-bottom: 25px;
+}
+
+header.masthead .masthead-heading {
+  font-size: 3.25rem;
+  font-weight: 700;
+  line-height: 3.25rem;
+  margin-bottom: 2rem;
+}
+
+
+// ----- About：　出来ること-----
+
+.features-icons {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+}
+.features-icons .features-icons-item {
+  max-width: 20rem;
+}
+.features-icons .features-icons-item .features-icons-icon {
+  height: 7rem;
+}
+.features-icons .features-icons-item .features-icons-icon i {
+  font-size: 4.5rem;
+}
+
+.lead {
+  font-size: 1.25rem;
+  font-weight: 300;
+}
+
+
+// ----- About：　section-----
+
+#scroll {
+  background-color: #e5e4e6;
+}
+
+.sec2 {
+  background-color: #f5f5f5;
+}
+
+.sec3 {
+  background-color: #e5e4e6;
 }

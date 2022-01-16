@@ -1,5 +1,5 @@
 
-<h3><%= @range %> カテゴリで "<%= @word %>"での検索結果</h3>
+<h3><%= @item %> カテゴリで "<%= @word %>"での検索結果</h3>
 <!--Posts一覧 -->
 <table class="table table-hover table-inverse">
 　<% if @range == 'Posts' %>
@@ -37,14 +37,14 @@
       <% @tags.each do |tag| %>
         <tr>
           <td>
-            <%# @tags.each do |tag| %>
               <% if tag.post_tags.count > 0 %>
                 <%= link_to tag.tag_name, search_tag_path(tag_id: tag.id) %><%= "(#{PostTag.where(tag_id: tag.id).count})" %>
               <% end %>
-            <%# end %>
           </td>
         </tr>
       <% end %>
-    </tbody>
+     </tbody>
+    
+    
   <% end %>
 </table>

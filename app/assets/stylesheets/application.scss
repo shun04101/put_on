@@ -17,6 +17,19 @@
  @import 'font-awesome-sprockets';
  @import 'font-awesome';
  
+ header {
+   min-height: 10vh;
+ }
+ 
+ main {
+   min-height: 80vh;
+ }
+ 
+ footer {
+   min-height: 10vh;
+ }
+ 
+ 
  //logo設定
 .logo-icon {
   margin: 0;
@@ -85,6 +98,14 @@ body {
   justify-content: space-between;
 }
 
+.mypage-top {
+  margin-top: 40px;
+}
+
+.mypage-right {
+  margin-top: 70px;
+}
+
 .mypage-right, .mypage-left {
   width: 48%;
 }
@@ -93,6 +114,33 @@ body {
   margin-top: 10px;
 }
 
+.all-post {
+  margin-top: 3px;
+}
+
 .list-group {
   margin-top: 10px;
+}
+
+
+// Top/Timelineでの画像の中にブックマークボタン
+.card-in-bookmark {
+  position: relative;
+}
+
+.card-in-bookmark-btn {
+  width: 50px;
+  height: 50px;
+  color: #ffffff;
+  // background-color: #2779bd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+  
+  position: absolute;
+  top: 80%;
+  // left: 65%;
 }

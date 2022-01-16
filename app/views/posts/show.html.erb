@@ -1,39 +1,47 @@
 <!--　投稿詳細画面 -->
 
 <div class="text-success"><strong style="font-size: 20px;"><%= flash[:success] %></strong></div>
-<h4>投稿詳細</h4>
-<div class="card mb-3">
-  <div class="row no-gutters">
-    <div class="col">
-      <%= attachment_image_tag(@post, :image, :fill, 500, 500, class:"bd-placeholder-img") %>
-    </div>
-    <div class="col">
-      <div class="card-body">
-        <%= link_to user_path(@post.user_id) do %>
-          <p class="card-title"><%= @post.user.nickname %></p>
-        <% end %>
-        <h5 class="card-text">タイトル | <%= @post.title %></h5>
-        <p class="card-text">コメント | <%= @post.comment %></p>
-        <p class="card-text">
-          <small class="text-muted">
-            <% @post_tags.each do |tag| %>
-              <i class="fas fa-tag"><%= link_to tag.tag_name, search_tag_path(tag_id: tag.id) %><%= "(#{tag.posts.count})" %></i>
-            <% end %>
-          </small>
-        </p>
-        <p class="card-text">
-          <% @post.sites.each do |site| %>
-            <%= link_to site.info_i18n, site.link, target: :_blank %>
-          <% end %>
-        </p>
-        <div id="bookmark_button_<%= @post.id %>">
-          <%= render "bookmarks/bookmark", post: @post %>
+
+<div class="container post-detail">
+  
+  <div class="row">
+    <div class="card">
+      <div class="row no-gutters">
+        
+        <div class="col-6">
+          <%= attachment_image_tag(@post, :image, :fill, 700, 700, class:"bd-placeholder-img", style: "width: 100%;") %>
         </div>
-        <p><i class="far fa-clock"><%= time_ago_in_words(@post.created_at)+"前" %></i></p>
-        <% if @post.user == current_user %>
-          <td><%= link_to '編集する', edit_post_path(@post), class: "btn btn-outline-success center-block mx-3" %></td>
-          <td><%= link_to "削除", post_path(@post), method: :delete, class: "btn btn-outline-danger center-block mx-3" %></td>
-        <% end %>
+        
+        <div class="col-6">
+          <div class="card-body">
+            <%= link_to user_path(@post.user_id) do %>
+              <p class="card-title"><%= @post.user.nickname %></p>
+            <% end %>
+            <h5 class="card-text">タイトル | <%= @post.title %></h5>
+            <p class="card-text">コメント | <%= @post.comment %></p>
+            <p class="card-text">
+              <small class="text-muted">
+                <% @post_tags.each do |tag| %>
+                  <i class="fas fa-tag"><%= link_to tag.tag_name, search_tag_path(tag_id: tag.id) %><%= "(#{tag.posts.count})" %></i>
+                <% end %>
+              </small>
+            </p>
+            <p class="card-text">
+              <% @post.sites.each do |site| %>
+                <%= link_to site.info_i18n, site.link, target: :_blank %>
+              <% end %>
+            </p>
+            <div id="bookmark_button_<%= @post.id %>">
+              <%= render "bookmarks/bookmark", post: @post %>
+            </div>
+            <p><i class="far fa-clock"><%= time_ago_in_words(@post.created_at)+"前" %></i></p>
+            <% if @post.user == current_user %>
+              <td><%= link_to '編集する', edit_post_path(@post), class: "btn btn-outline-success center-block mx-3" %></td>
+              <td><%= link_to "削除", post_path(@post), method: :delete, class: "btn btn-outline-danger center-block mx-3" %></td>
+            <% end %>
+          </div>
+        </div>
+        
       </div>
     </div>
   </div>
