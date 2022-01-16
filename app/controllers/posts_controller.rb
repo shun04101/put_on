@@ -57,7 +57,7 @@ class PostsController < ApplicationController
       @post.update_tag(tag_list)
       # redirect_to posts_path(user_id: current_user.id)
       redirect_to user_posts_path(@post.user.id)
-      flash[:success] = "変更を保存しました！"
+      flash[:success] = "コーディネート情報を変更しました！"
     else
       render :edit
     end

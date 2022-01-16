@@ -6,7 +6,27 @@ ja:
         bottoms: ボトムス   #Enumの名前定義②
         accessory: アクセサリー
         other: その他
-  
+        
+  activerecord:
+    attributes:
+      user:
+        last_name: 氏名(姓)
+        first_name: 氏名(名)
+        last_name_kana: フリガナ(セイ)
+        first_name_kana: フリガナ(メイ)
+        nickname: ニックネーム
+        email: メールアドレス
+        password: パスワード
+      post:
+        image: コーディネート画像
+        title: コーディネートタイトル
+        comment: コメント
+      site:
+        info: アイテム
+        link: 購入場所/サイトリンク
+      tag:
+        tag_name: タグ
+        
   datetime:
     distance_in_words:
       half_a_minute: "30秒前後"

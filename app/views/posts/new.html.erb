@@ -4,11 +4,8 @@
     <div class="col-11">
       <h4 class="row offset-5 my-5">コーディネート新規登録</h4>
       <%= form_with model: @post, url: new_post_path, local: true do |f| %>
-        
-        <div>
-          <p>投稿内容</p>
-        </div>
-        
+      <%= render 'layouts/error_messages', model: f.object %> 
+
         <div class="row form-group">
           <%= f.label :コーディネート画像, class: "offset-2 col-3" %>
           <%= f.attachment_field :image %>

@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
+    flash[:primary] = "会員情報更新しました"
     redirect_to user_path
   end
 
@@ -30,7 +31,7 @@ class UsersController < ApplicationController
     ## is_deletedカラムをtrueに変更することにより削除フラグを立てる
     @user.update(is_deleted: true)
     reset_session
-    flash[:notice] = "退会処理を実行しました" ## 該当viewファイルへ<%= notice %>を
+    flash[:notice] = "退会しました。またのご利用をお待ちしております" ## 該当viewファイルへ<%= notice %>を
     redirect_to root_path
 
   end

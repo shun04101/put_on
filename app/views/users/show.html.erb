@@ -1,6 +1,7 @@
+<div class = "flash_message text-center text-primary"><%= flash[:primary] %></div>
+
 <div class="container mypage-top">
-  <div class = "flash_message text-center text-success"><%= flash[:success] %></div>
-  
+
   <div class="mypage-content">
     
     <div class="mypage-left">
@@ -39,12 +40,12 @@
           <% else %>
             <%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class:"btn btn-outline-primary" %>
           <% end %>
-          <h4 class="page-header">最新2件の投稿</h4>
+          <h5 class="font-weight-bold align-self-center page-header">最新2件の投稿</h5>
           <ul class="list-group">
             <% @posts.each do |post| %>
               <li class="list-group-item">
                 <span class="badge text-danger"><%= link_to "[詳細]", post_path(post.id) %></span>
-                <%= @user.nickname %> | <%= post.title %> | <%= post.comment.truncate(25) %>
+                <%= @user.nickname %> | <%= post.title.truncate(5) %> | <%= post.comment.truncate(5) %>
                 <i class="fas fa-tag"><%= post.tags.map(&:tag_name).join(', ') %></i>
                 <i class="far fa-clock"><%= time_ago_in_words(post.created_at)+"前" %></i>
               </li>
@@ -57,14 +58,14 @@
       <!--ログインユーザーのマイページ-->
       <% if user_signed_in? && current_user.id.to_s == params[:id] %>
         <div class="row">
-          <h4 class="page-header col-6">最新2件の投稿</h4>
+          <h5 class="font-weight-bold align-self-center page-header col-6">最新2件の投稿</h5>
           <div class="col-6"><%= link_to "全投稿を見る", posts_path(user_id: @user.id), class:"btn btn-outline-primary col-xs-3 offset-xs-3" %></div>
         </div>
         <ul class="list-group">
           <% @posts.each do |post| %>
             <li class="list-group-item">
               <span class="badge text-danger"><%= link_to "[詳細]", post_path(post.id) %></span>
-              <%= @user.nickname %> | <%= post.title %> | <%= post.comment.truncate(25) %>
+              <%= @user.nickname %> | <%= post.title.truncate(5) %> | <%= post.comment.truncate(5) %>
               <i class="fas fa-tag"><%= post.tags.map(&:tag_name).join(', ') %></i>
               <i class="far fa-clock"><%= time_ago_in_words(post.created_at)+"前" %></i>
             </li>
