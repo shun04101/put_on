@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   
   def index
     @user = User.find_by(id: params[:user_id])
-    @posts = @user.posts.all.order(created_at: :desc)
+    @posts = @user.posts.all.order(created_at: :desc).page(params[:page]).per(5)
     @tag_list = Tag.all
   end
   

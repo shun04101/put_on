@@ -10,7 +10,8 @@
     <% end %>
   <% end %>
   
-  <h3 class="page-header">投稿一覧</h3>
+  <h3 class="page-header">投稿一覧(1ページ<%= @posts.count %>件表示)</h3>
+  <%= paginate @posts %>
   <table class="table table-hover">
     <thead>
       <tr>

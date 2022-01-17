@@ -5,8 +5,8 @@
 <div class="bg-dark py-1">
   <div class="container px-4 px-lg-5 my-5">
     <div class="text-center text-white">
-      <h1 class="display-4 fw-bolder">トップページ</h1>
-      <p class="lead fw-normal text-white-50 mb-0">みんなのコーディネートを見てみよう</p>
+      <h1 class="display-4 fw-bolder font-top">Top Page</h1>
+      <p class="lead fw-normal text-white-50 mb-0 font-top">みんなのコーディネートを見てみよう</p>
     </div>
   </div>
 </div>
@@ -16,7 +16,7 @@
     <div class="row" style="display: flex;">
       <% @posts.each do |post| %>
         <div class="col-12 col-md-6 col-lg-3">
-          <div class="card card-scale_animation">
+          <div class="card card-scale_animation shadow-lg">
             <div class="card-in-bookmark">
               <%= link_to post_path(post.id) do %>
                 <%= attachment_image_tag(post, :image, :fill, 300, 300, class:"card-img-top") %>

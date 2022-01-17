@@ -5,7 +5,7 @@
 <div class="container post-detail">
   
   <div class="row">
-    <div class="card">
+    <div class="card shadow-lg">
       <div class="row no-gutters">
         
         <div class="col-6">
@@ -15,20 +15,24 @@
         <div class="col-6">
           <div class="card-body">
             <%= link_to user_path(@post.user_id) do %>
-              <p class="card-title"><%= @post.user.nickname %></p>
+              <h3 class="card-nickname"><%= @post.user.nickname %></h3>
             <% end %>
-            <h5 class="card-text">タイトル | <%= @post.title %></h5>
-            <p class="card-text">コメント | <%= @post.comment %></p>
-            <p class="card-text">
+            <h5 class="text-center card-title-ja">タイトル</h5>
+            <p class="card-title"><%= @post.title %></p>
+            <h5 class="text-center card-comment-ja">コメント</h5>
+            <p class="card-comment"><%= @post.comment %></p>
+            <h5 class="text-center card-tag-ja">タグ</h5>
+            <p class="card-tag">
               <small class="text-muted">
                 <% @post_tags.each do |tag| %>
                   <i class="fas fa-tag"><%= link_to tag.tag_name, search_tag_path(tag_id: tag.id) %><%= "(#{tag.posts.count})" %></i>
                 <% end %>
               </small>
             </p>
-            <p class="card-text">
+            <h5 class="text-center card-site-ja">購入場所サイト</h5>
+            <p class="card-site">
               <% @post.sites.each do |site| %>
-                <%= link_to site.info_i18n, site.link, target: :_blank %>
+                <%= link_to site.info_i18n, site.link, target: :_blank %><br>
               <% end %>
             </p>
             <div id="bookmark_button_<%= @post.id %>">

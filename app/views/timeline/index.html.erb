@@ -2,8 +2,8 @@
 <div class="bg-dark py-1">
   <div class="container px-4 px-lg-5 my-5">
     <div class="text-center text-white">
-      <h1 class="display-4 fw-bolder">タイムライン</h1>
-      <p class="lead fw-normal text-white-50 mb-0">あなたとフォローした人のコーディネート</p>
+      <h1 class="display-4 fw-bolder font-top">Time Line</h1>
+      <p class="lead fw-normal text-white-50 mb-0 font-top-2">あなたとフォローした人のコーディネート</p>
     </div>
   </div>
 </div>
@@ -13,7 +13,7 @@
     <div class="row">
       <% @posts.each do |post| %>
         <div class="col-12 col-md-6 col-lg-3">
-          <div class="card card-scale_animation">
+          <div class="card card-scale_animation shadow-lg">
             <div class="card-in-bookmark">
               <%= link_to post_path(post.id) do %>
                 <%= attachment_image_tag(post, :image, :fill, 300, 300, class:"card-img-top") %>
