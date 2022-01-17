@@ -17,8 +17,9 @@ class PostsController < ApplicationController
     
     @post = Post.new(post_params)
     @post.user_id = current_user.id
+    @post.tag_name = params[:post][:tag_name]
     if @post.save
-      @post.save_tag(post_tag_name_params[:tag_name].split(','))
+      # @post.save_tag(post_tag_name_params[:tag_name].split(','))
       redirect_to posts_path(@post.id, user_id: @post.user.id)
       flash[:success] = "コーディネートを新規登録しました！"
     else
@@ -48,13 +49,14 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     # 入力されたタグを受け取る
-    tag_list = params[:post][:tag_name].split(',')
+    # tag_list = params[:post][:tag_name].split(',')
+    @post.tag_name = params[:post][:tag_name]
     if @post.update(post_params)
-      @old_relations = PostTag.where(post_id: @post.id)
-      @old_relations.each do |relation|
-        relation.delete
-      end
-      @post.update_tag(tag_list)
+      # @old_relations = PostTag.where(post_id: @post.id)
+      # @old_relations.each do |relation|
+      #   relation.delete
+      # end
+      # @post.update_tag(tag_list)
       # redirect_to posts_path(user_id: current_user.id)
       redirect_to user_posts_path(@post.user.id)
       flash[:success] = "コーディネート情報を変更しました！"

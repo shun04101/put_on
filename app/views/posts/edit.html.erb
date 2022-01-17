@@ -4,7 +4,7 @@
     <div class="col-11">
       <h4 class="row offset-1 my-5">投稿編集</h4>
       <%= form_with model:@post, url: edit_post_path, local: true do |f| %>
-        <%#= render 'layouts/error_messages', model: f.object %>
+        <%= render 'layouts/error_messages', model: f.object %>
         
         <div class="row form-group">
           <%= f.label :コーディネート画像, class: "offset-2 col-3" %>
@@ -22,8 +22,26 @@
         </div>
         
         <div class="row form-group">
-          <%= f.label :購入場所リンク, class: "offset-2 col-3" %>
-          <%= f.text_area :site, placeholder:"洋服を購入したサイトのURLを張ってください", class: 'form-control col-4' %>
+          <label class="offset-2 col-3">購入場所・リンク</label>
+        </div>
+        
+        <div class="row form-group" style="margin-left: 40%;">
+          <div class="nested-fields">
+            <%= f.fields_for :sites do |site| %>
+              <%= render "posts/site_fields", f: site %>
+            <% end %>
+          </div>
+          
+          <div id="detail-association-insertion-point"></div>
+          
+          <div>
+            <%= link_to_add_association "+フォームを追加", f, :sites,
+            class:"btn btn-secondary",
+            data: {
+              association_insertion_node: '#detail-association-insertion-point',
+              association_insertion_method: 'after'
+            } %>
+          </div>
         </div>
         
         <div class="row form-group">

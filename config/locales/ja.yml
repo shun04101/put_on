@@ -29,11 +29,10 @@ ja:
         image: コーディネート画像
         title: コーディネートタイトル
         comment: コメント
-      site:
-        info: アイテム
-        link: 購入場所/サイトリンク
-      tag:
         tag_name: タグ
+      post/sites:
+        info: アイテム
+        link: 購入場所・リンク
         
   datetime:
     distance_in_words:

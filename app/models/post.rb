@@ -6,10 +6,37 @@ class Post < ApplicationRecord
   
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
+  
+  # postモデルに仮想的にtag_nameカラムを作っている
+  attr_accessor :tag_name
+  
+  # 新規にデータベースが作られたときに呼び出されるメソット
+  after_create do
+    if tag_name.present?
+      save_tag(tag_name.split(','))
+    # else
+      # errors.add(:tag_name, 'タグを入力して下さい')
+    end
+  end
+  
+  after_update do
+    if tag_name.present?
+      update_tag(tag_name.split(','))
+    # else
+      # errors.add(:tag_name, 'タグを入力して下さい')
+    end
+  end
+  
+  def tag_name_presense
+    pp "tag_name" + tag_name
+    if tag_name.blank?
+      errors.add(:tag_name, 'を入力して下さい')
+    end
+  end
 
   has_many :sites, dependent: :destroy
   accepts_nested_attributes_for :sites, allow_destroy: true
-  validates_associated :sites
+  # validates_associated :sites
   
   has_many :bookmarks, dependent: :destroy
   
@@ -17,6 +44,7 @@ class Post < ApplicationRecord
   validates :comment, presence: true
   validates :image, presence: true
   # validates :tag, presence: true
+  validate :tag_name_presense
 
   def save_tag(sent_tags)
     # 新しいタグを保存
@@ -36,7 +64,7 @@ class Post < ApplicationRecord
 
     # 古いタグを消す
     old_tags.each do |old|
-      self.tags.delete = Tag.find_by(tag_name: old)
+      self.tags.delete Tag.find_by(tag_name: old)
     end
 
     # 新しいタグを保存

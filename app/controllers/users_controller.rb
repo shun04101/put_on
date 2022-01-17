@@ -16,9 +16,12 @@ class UsersController < ApplicationController
   #会員情報更新
   def update
     @user = User.find(params[:id])
-    @user.update(user_params)
-    flash[:primary] = "会員情報更新しました"
-    redirect_to user_path
+    if @user.update(user_params)
+      flash[:primary] = "会員情報更新しました"
+      redirect_to user_path
+    else
+        render :edit
+    end
   end
 
   #会員退会画面を表示
