@@ -35,9 +35,11 @@
                 <%= link_to site.info_i18n, site.link, target: :_blank %><br>
               <% end %>
             </p>
-            <div id="bookmark_button_<%= @post.id %>">
-              <%= render "bookmarks/bookmark", post: @post %>
-            </div>
+            <% if user_signed_in? %>
+              <div id="bookmark_button_<%= @post.id %>">
+                <%= render "bookmarks/bookmark", post: @post %>
+              </div>
+            <% end %>
             <p><i class="far fa-clock"><%= time_ago_in_words(@post.created_at)+"前" %></i></p>
             <% if @post.user == current_user %>
               <td><%= link_to '編集する', edit_post_path(@post), class: "btn btn-outline-success center-block mx-3" %></td>
