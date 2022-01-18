@@ -74,6 +74,12 @@ body {
 
 
 //ヘッダー
+
+/* ヘッダーに影をつける */
+.navbar {
+  box-shadow: 0 5px 6px rgba(0,0,0,0.2);
+}
+
 .navbar-nav li a{
 	position: relative;
 }
