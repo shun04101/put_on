@@ -1,9 +1,14 @@
 ja:
-  enums:              #enum型に対する日本語定義であることを明示するために記述
-    site:           #モデル名を指定
-      info:           #カラム名を指定
-        tops: トップス     #Enumの名前定義①
-        bottoms: ボトムス   #Enumの名前定義②
+  enums:                   #enum型に対する日本語定義であることを明示するために記述
+    site:                  #モデル名を指定
+      info:                #カラム名を指定
+        tops: トップス     #Enumの名前定義
+        jacket: ジャケット/アウター
+        pants: パンツ
+        skirt: スカート
+        dress: ワンピース/ドレス
+        shoes: 靴
+        goods: バック等の小物
         accessory: アクセサリー
         other: その他
   
