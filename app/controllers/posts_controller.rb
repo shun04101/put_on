@@ -70,6 +70,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to posts_path(user_id: @post.user.id)
+    flash[:success] = "選択された投稿を削除しました"
   end
   
   private
@@ -78,7 +79,7 @@ class PostsController < ApplicationController
       :title,
       :comment,
       :image,
-      sites_attributes: [:link, :info, :_destroy]
+      sites_attributes: [:id, :link, :info, :_destroy]
     )
   end
   
