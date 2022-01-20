@@ -74,3 +74,8 @@ gem 'rails-i18n'
 gem 'rinku'
 gem 'slim-rails'
 gem 'cocoon'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
