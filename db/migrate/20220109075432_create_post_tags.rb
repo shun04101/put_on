@@ -3,7 +3,7 @@ class CreatePostTags < ActiveRecord::Migration[5.2]
     create_table :post_tags do |t|
       
       t.references :post, foreign_key: true
-      t.references :tag, foreign_key: true
+      t.integer :tag_id
       
       t.timestamps
     end
