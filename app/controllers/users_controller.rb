@@ -34,11 +34,14 @@ class UsersController < ApplicationController
   def withdraw
     @user = current_user
     ## is_deletedカラムをtrueに変更することにより削除フラグを立てる
-    @user.update(is_deleted: true)
-    reset_session
-    flash[:notice] = "退会しました。またのご利用をお待ちしております" ## 該当viewファイルへ<%= notice %>を
-    redirect_to root_path
-
+    if @user.update(is_deleted: true)
+      @user.posts.each do |post|
+        post.destroy!
+      end
+      reset_session
+      flash[:notice] = "退会しました。またのご利用をお待ちしております" ## 該当viewファイルへ<%= notice %>を
+      redirect_to root_path
+    end
   end
 
   private
