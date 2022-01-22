@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
   
   #会員マイページ画面を表示
   def show
@@ -24,6 +25,11 @@ class UsersController < ApplicationController
     else
         render :edit
     end
+  end
+  
+  # 新規会員登録でエラー文が出た後にリロードするとルーティングエラーになるのを回避
+  def index
+    redirect_to new_user_registration_path
   end
 
   #会員退会画面を表示
