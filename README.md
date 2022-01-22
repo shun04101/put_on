@@ -1,4 +1,5 @@
 # Put on
+![](https://github.com/shun04101/put_on/blob/main/logo2.png)
 
 ## サイト概要
 コーディネート共有SNSサイトです。
