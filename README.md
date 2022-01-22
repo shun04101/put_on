@@ -1,4 +1,4 @@
-# Put on
+# Put on [サイトへ](54.150.167.238)
 ![](https://github.com/shun04101/put_on/blob/main/logo2.png)
 
 ## サイト概要
@@ -43,8 +43,19 @@
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
+## 環境構築に必要な手順
+```
+git clone git@github.com:shun04101/put_on.git
+cd put_on
+rails db:migrate
+bundle install
+```
+
 ## 使用素材
 - [ICOOON MONO](https://icooon-mono.com/)
 - [ODAN](https://o-dan.net/ja/)
 - [FONT FREE](https://fontfree.me/)
 - [DesignEvo](https://www.designevo.com/)
+
+## 開発者
+- 中島俊太郎(DMM WEBCAMP COMMIT 2021年11月生)
