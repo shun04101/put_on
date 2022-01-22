@@ -1,4 +1,4 @@
-# Put on [サイトへ](54.150.167.238)
+# Put on
 ![](https://github.com/shun04101/put_on/blob/main/logo2.png)
 
 ## サイト概要
@@ -46,8 +46,14 @@
 ## 環境構築に必要な手順
 ```
 git clone git@github.com:shun04101/put_on.git
+```
+```
 cd put_on
+```
+```
 rails db:migrate
+```
+```
 bundle install
 ```
 
