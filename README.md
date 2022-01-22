@@ -45,4 +45,6 @@
 
 ## 使用素材
 - [ICOOON MONO](https://icooon-mono.com/)
-- ※随時更新予定
+- [ODAN](https://o-dan.net/ja/)
+- [FONT FREE](https://fontfree.me/)
+- [DesignEvo](https://www.designevo.com/)
