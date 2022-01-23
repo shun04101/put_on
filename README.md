@@ -57,6 +57,19 @@ rails db:migrate
 bundle install
 ```
 
+## サンプルユーザー情報
+※フォローフォロワー等の機能確認の為に3人用意しました。
+- 1人目
+  - メールアドレス：yuuzi@gmail.com
+  - パスワード：123456
+- 2人目
+  - メールアドレス：megumi@gmail.com
+  - パスワード：123456
+- 3人目
+  - メールアドレス：sample@gmail.com
+  - パスワード：123456
+
+
 ## 使用素材
 - [ICOOON MONO](https://icooon-mono.com/)
 - [ODAN](https://o-dan.net/ja/)
