@@ -22,6 +22,9 @@ Rails.application.routes.draw do
     resources :bookmarks, only: [:create, :destroy]
   end
   
+  resources :notifications, only: [:index]
+  delete 'notifications/destroy_all', to: 'notifications#destroy_all', as: 'destroy_all_notifications'
+  
   # タグの検索で使用する
   get "search_tag"=>"posts#search_tag"
 

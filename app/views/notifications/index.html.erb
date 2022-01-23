@@ -1,0 +1,33 @@
+<!-- お知らせ一覧画面 -->
+
+<h3>お知らせ一覧</h3>
+<% if @notifications.exists? %>
+  <%= link_to destroy_all_notifications_path, method: :delete do %>
+    <i class="fas fa-trash" style="color: black;"></i>
+    <h6 style="color: black;">全削除</h6>
+  <% end %>
+  <% @notifications.each do |notification| %>
+    <table class="table table-hover mt-5">
+      <thead>
+        <tr>
+          <th>あなたがフォローされたユーザーニックネーム</th>
+          <th>通知タイミング</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <%= link_to user_path(notification.visitor) do %>
+              <%= notification.visitor.nickname %>
+            <% end %>
+          </td>
+          <td><%= " (#{time_ago_in_words(notification.created_at)}前)" %></td>
+        </tr>
+      </tbody>
+    </table>
+  <% end %>
+<% else %>
+  <div class="col text-center">
+    <h4 class="font-weight-bold mt-5">現在、お知らせはありません</h4>
+  </div>
+<% end %>
