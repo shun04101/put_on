@@ -14,16 +14,12 @@ class Post < ApplicationRecord
   after_create do
     if tag_name.present?
       save_tag(tag_name.split(','))
-    # else
-      # errors.add(:tag_name, 'タグを入力して下さい')
     end
   end
   
   after_update do
     if tag_name.present?
       update_tag(tag_name.split(','))
-    # else
-      # errors.add(:tag_name, 'タグを入力して下さい')
     end
   end
   
@@ -46,21 +42,21 @@ class Post < ApplicationRecord
   # validates :tag, presence: true
   validate :tag_name_presense
 
-  def save_tag(sent_tags)
+  def save_tag(tag_names)
     # 新しいタグを保存
-    sent_tags.each do |new|
-      new_post_tag = Tag.find_or_create_by(tag_name: new)
+    tag_names.each do |tag_name|
+      new_post_tag = Tag.find_or_create_by(tag_name: tag_name)
       self.tags << new_post_tag
     end
   end
 
-  def update_tag(sent_tags)
+  def update_tag(tag_names)
   # タグが存在していれば、タグの名前を配列として全て取得
     current_tags = self.tags.pluck(:tag_name) unless self.tags.nil?
     # 現在取得したタグから送られてきたタグを除いてoldtagとする
-    old_tags = current_tags - sent_tags
+    old_tags = current_tags - tag_names
     # 送信されてきたタグから現在存在するタグを除いたタグをnewとする
-    new_tags = sent_tags - current_tags
+    new_tags = tag_names - current_tags
 
     # 古いタグを消す
     old_tags.each do |old|
@@ -68,22 +64,34 @@ class Post < ApplicationRecord
     end
 
     # 新しいタグを保存
-    new_tags.each do |new|
-      new_post_tag = Tag.find_or_create_by(tag_name: new)
-      self.tags << new_post_tag
-    end
+    save_tag(new_tags)
+    
+    # ６７行目の別解
+    # new_tags.each do |new|
+    #   new_post_tag = Tag.find_or_create_by(tag_name: new)
+    #   self.tags << new_post_tag
+    # end
   end
   
   def self.search(search, word)
     if search == "perfect_match"
-      @post = Post.where(title: "#{word}")
+    where(title: "#{word}")
     elsif search == "partial_match"
-      @post = Post.where("title LIKE?","%#{word}%")
+      where("title LIKE?","%#{word}%")
     else
-      @post = Post.all
+      all
     end
   end
-  
+
+  # ７８行目〜８４行目までの別解
+  # if search == "perfect_match"
+  #   @post = Post.where(title: "#{word}")
+  # elsif search == "partial_match"
+  #   @post = Post.where("title LIKE?","%#{word}%")
+  # else
+  #   @post = Post.all
+  # end
+
   # 既にブックマークしていないか検証
   def bookmarked_by?(user)
     bookmarks.where(user_id: user).exists?
