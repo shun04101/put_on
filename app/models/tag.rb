@@ -7,12 +7,23 @@ class Tag < ApplicationRecord
   
   def self.search(search, word)
     if search == "perfect_match"
-      @tags = Tag.where(tag_name: "#{word}")
+      where(tag_name: "#{word}")
     elsif search == "partial_match"
-      @tags = Tag.where("tag_name LIKE?","%#{word}%")
+      where("tag_name LIKE?","%#{word}%")
     else
-      @tags = Tag.all
+      all
     end
-    @tags
   end
+  
+  # ８行目〜１６行目の別解
+  # def self.search(search, word)
+  #   if search == "perfect_match"
+  #     @tags = Tag.where(tag_name: "#{word}")
+  #   elsif search == "partial_match"
+  #     @tags = Tag.where("tag_name LIKE?","%#{word}%")
+  #   else
+  #     @tags = Tag.all
+  #   end
+  #   @tags
+  # end
 end
