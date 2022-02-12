@@ -1,6 +1,7 @@
 class BookmarksController < ApplicationController
   before_action :authenticate_user!
   
+  # ブックマーク作成
   def create
     @post = Post.find(params[:post_id])
     @bookmark = @post.bookmarks.new(user_id: current_user.id)
@@ -11,6 +12,7 @@ class BookmarksController < ApplicationController
     end
   end
   
+  # ブックマーク削除
   def destroy
     @post = Post.find(params[:post_id])
     @bookmark = @post.bookmarks.find_by(user_id: current_user.id)

@@ -9,7 +9,6 @@
        <th>ニックネーム</th>
        <th>投稿タイトル</th>
        <th>コメント</th>
-       <th colspan="3"></th>
       </tr>
     </thead>
     
@@ -32,21 +31,19 @@
     <thead>
       <tr>
         <th>タグ名</th>
-        <th colspan="3"></th>
       </tr>
     </thead>
     <tbody>
       <% @tags.each do |tag| %>
         <tr>
           <td>
-              <% if tag.post_tags.count > 0 %>
-                <%= link_to tag.tag_name, search_tag_path(tag_id: tag.id) %><%= "(#{PostTag.where(tag_id: tag.id).count})" %>
-              <% end %>
+            <% if tag.post_tags.count > 0 %>
+              <%= link_to tag.tag_name, search_tag_path(tag_id: tag.id) %><%= "(#{PostTag.where(tag_id: tag.id).count})" %>
+            <% end %>
           </td>
         </tr>
       <% end %>
      </tbody>
-    
     
   <% end %>
 </table>

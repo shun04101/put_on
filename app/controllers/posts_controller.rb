@@ -1,12 +1,14 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new]
   
+  # 投稿とタグ履歴一覧画面
   def index
     @user = User.find_by(id: params[:user_id])
     @posts = @user.posts.all.order(created_at: :desc).page(params[:page]).per(5)
     @tag_list = Tag.all
   end
   
+  # 投稿情報入力画面
   def new
     @post = Post.new
     # 親モデル.子モデル.buildで子モデルのインスタンス作成
@@ -14,8 +16,8 @@ class PostsController < ApplicationController
     @tags = @post.tags.new
   end
   
+  # 投稿新規登録
   def create
-    
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     @post.tag_name = params[:post][:tag_name]
@@ -28,11 +30,13 @@ class PostsController < ApplicationController
     end
   end
   
+  # 投稿履歴詳細
   def show
     @post = Post.find(params[:id])
     @post_tags = @post.tags
   end
   
+  # タグで投稿を絞り込み表示
   def search_tag
     #検索結果画面でもタグ一覧表示
     @tag_list = Tag.all
@@ -42,23 +46,17 @@ class PostsController < ApplicationController
     @posts = @tag.posts.page(params[:page]).per(10)
   end
   
+  # 投稿編集画面
   def edit
     @post = Post.find(params[:id])
     @tag_list = @post.tags.pluck(:tag_name).join(',')
   end
   
+  # 投稿内容更新
   def update
     @post = Post.find(params[:id])
-    # 入力されたタグを受け取る
-    # tag_list = params[:post][:tag_name].split(',')
     @post.tag_name = params[:post][:tag_name]
     if @post.update(post_params)
-      # @old_relations = PostTag.where(post_id: @post.id)
-      # @old_relations.each do |relation|
-      #   relation.delete
-      # end
-      # @post.update_tag(tag_list)
-      # redirect_to posts_path(user_id: current_user.id)
       redirect_to user_posts_path(@post.user.id)
       flash[:success] = "コーディネート情報を変更しました！"
     else
@@ -66,6 +64,7 @@ class PostsController < ApplicationController
     end
   end
   
+  # 投稿削除
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
@@ -74,6 +73,7 @@ class PostsController < ApplicationController
   end
   
   private
+  
   def post_params
     params.require(:post).permit(
       :title,

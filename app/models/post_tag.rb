@@ -6,6 +6,7 @@ class PostTag < ApplicationRecord
   validates :post_id, presence: true
   validates :tag_id, presence:true
   
+  # 検索機能
   def self.search(search, word)
     if search == "perfect_match"
       where(tag_name: "#{word}")

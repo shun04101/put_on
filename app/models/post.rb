@@ -31,6 +31,7 @@ class Post < ApplicationRecord
   end
 
   has_many :sites, dependent: :destroy
+  # 指定したモデルのデータを配列としてパラメーターに含めることができる
   accepts_nested_attributes_for :sites, allow_destroy: true
   # validates_associated :sites
   

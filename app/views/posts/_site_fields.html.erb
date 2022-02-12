@@ -1,4 +1,5 @@
 
+<!--追加フォーム-->
 <div class="nested-fields">
   <div class="mx-auto">
     <div class="col-12"><%= f.select :info, options_for_select(Site.infos.map { |k, _v| [I18n.t("enums.site.info.#{k}"), k] }), {include_blank: "アイテムを選択して下さい"}, { class: 'form-control', data: {} } %></div>

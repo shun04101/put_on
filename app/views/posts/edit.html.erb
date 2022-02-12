@@ -25,9 +25,11 @@
           <label class="offset-2 col-3">購入場所・リンク</label>
         </div>
         
+        
         <div class="row form-group" style="margin-left: 40%;">
           <div class="nested-fields">
             <%= f.fields_for :sites do |site| %>
+              <!--動的に追加するフォームの中身を記載-->
               <div class="nested-fields">
                 <div class="mx-auto">
                   <div class="col-12"><%= site.select :info, options_for_select(Site.infos.map { |k, _v| [I18n.t("enums.site.info.#{k}"), k] }, site.object.info), {include_blank: "アイテムを選択して下さい"}, { class: 'form-control', data: {} } %></div>
@@ -40,11 +42,14 @@
             <% end %>
           </div>
           
+          <!--フォームの表示位置の指定-->
           <div id="detail-association-insertion-point"></div>
           
+          <!--フォームが追加-->
           <div>
             <%= link_to_add_association "+フォームを追加", f, :sites,
             class:"btn btn-secondary",
+            # フォームの表示位置を指定
             data: {
               association_insertion_node: '#detail-association-insertion-point',
               association_insertion_method: 'after'
