@@ -29,12 +29,16 @@
 - ファッション雑誌だとレベルが高く真似ができないと思った時
 
 ## 設計書
+- [UI Flows](https://github.com/shun04101/put_on/blob/main/docs/PF_UI%20Flows_Put%20on.drawio.png)
 - [ER図](https://github.com/shun04101/put_on/blob/main/docs/PF_ER%E5%9B%B3_Put%20on.drawio.png)
 - [テーブル定義書](https://github.com/shun04101/put_on/blob/main/docs/PF_%E3%83%86%E3%83%BC%E3%83%95%E3%82%99%E3%83%AB%E6%8F%90%E8%AD%B0%E6%9B%B8_Put%20on.pdf)
 - [アプリケーション詳細設計](https://github.com/shun04101/put_on/blob/main/docs/PF_%E3%82%A2%E3%83%95%E3%82%9A%E3%83%AA%E3%82%B1%E3%83%BC%E3%82%B7%E3%83%A7%E3%83%B3%E8%A9%B3%E7%B4%B0%E8%A8%AD%E8%A8%88_Put%20on%20.pdf)
 
 ## チャレンジ要素一覧
 <https://docs.google.com/spreadsheets/d/1jFiokAs1VGmZsr9ADLpOyiKyw9qP4ZdmSeuZlwwI0xk/edit#gid=800699043>
+
+## 成果物発表会時使用プレゼン資料
+- [スライド](https://github.com/shun04101/put_on/blob/main/docs/PF%E6%88%90%E6%9E%9C%E7%89%A9%E7%99%BA%E8%A1%A8_Put%20on.pdf)
 
 ## 開発環境
 - OS：Linux(CentOS)
